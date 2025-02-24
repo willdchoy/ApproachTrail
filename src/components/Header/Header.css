@@ -1,0 +1,40 @@
+.header-grid-logo {
+  grid-area: logo;
+}
+.header-grid-search {
+  grid-area: search;
+}
+.header-grid-user {
+  grid-area: user;
+}
+
+header .wrapper {
+  display: grid;
+  gap: 0px;
+  align-items: center;
+  grid-template-areas:
+    "logo user"
+    "search search";
+
+  width: 100vw;
+  background: #ddd2b2;
+
+  & > div:nth-child(3) {
+    text-align: right;
+    margin-right: 10px;
+  }
+}
+
+@media (min-width: 500px) {
+  header .wrapper {
+    gap: 20px;
+    grid-template-columns: 70px 1fr 60px;
+    grid-template-areas: "logo search user";
+
+    height: 80px;
+
+    & > div:nth-child(3) {
+      text-align: center;
+    }
+  }
+}
