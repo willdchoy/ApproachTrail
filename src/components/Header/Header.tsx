@@ -1,6 +1,6 @@
-import UserMenu from "../UserMenu/UserMenu";
-import Search from "../Search/Search";
-import Logo from "../Logo/Logo";
+import UserMenu from "@/components/UserMenu/UserMenu";
+import Search from "@/components/Search/Search";
+import Logo from "@/components/Logo/Logo";
 import "./Header.css";
 
 function Header() {

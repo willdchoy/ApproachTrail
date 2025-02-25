@@ -1,6 +1,6 @@
-import ProductSlide from "../ProductSlide/ProductSlide";
-import northFaceLogo from "../../assets/north-face-logo.svg";
-import ProductExample from "../../assets/product-example.avif";
+import ProductSlide from "@/components/ProductSlide/ProductSlide";
+import northFaceLogo from "@/assets/north-face-logo.svg";
+import ProductExample from "@/assets/product-example.avif";
 
 function ProductSlider() {
   const productProps = {

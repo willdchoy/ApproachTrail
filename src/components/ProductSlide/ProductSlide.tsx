@@ -1,5 +1,5 @@
 import "./ProductSlide.css";
-import SocialIcons from "../SocialIcons/Socialcons";
+import SocialIcons from "@/components/SocialIcons/Socialcons";
 
 interface ProductSlideProps {
   title: string;
