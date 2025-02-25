@@ -10,9 +10,6 @@
 .filter {
   grid-area: filter;
 }
-.ad {
-  grid-area: ad;
-}
 .main-footer {
   grid-area: footer;
 }
@@ -24,8 +21,7 @@
   grid-template-areas:
     "header"
     "filter"
-    "content"
-    "ad";
+    "content";
 }
 
 @media (min-width: 500px) {
@@ -33,6 +29,6 @@
     grid-template-columns: 1fr 4fr 1fr;
     grid-template-areas:
       "header header header"
-      "filter content ad";
+      "content content content";
   }
 }

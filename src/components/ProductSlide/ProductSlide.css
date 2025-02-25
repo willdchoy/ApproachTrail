@@ -1,0 +1,40 @@
+.product-slide {
+  height: 350px;
+  width: 200px;
+  background-color: #ffffff;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  padding: 10px;
+
+  h3.product-title {
+    color: rgb(42, 42, 42);
+    margin: 0;
+    margin-bottom: 3px;
+
+    font-weight: normal;
+
+    img {
+      height: 35px;
+    }
+
+    .product-logo {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .product-title-text {
+      font-size: 16px;
+      display: block;
+    }
+  }
+
+  .product-image {
+    height: 233px;
+    margin-bottom: 10px;
+  }
+
+  p.product-description {
+  }
+}

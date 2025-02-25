@@ -17,13 +17,23 @@
 
   --base-border-radius: 3px;
   --form-border-raduis: var(--base-border-radius);
+
+  --base-text-color: rgb(42, 42, 42);
 }
 
 body {
   margin: 0;
+  box-sizing: border-box;
 }
 
 input {
+  color: var(--base-text-color);
+}
+
+input {
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  box-sizing: border-box;
   display: block;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -32,10 +42,6 @@ input {
   border: 0;
   border-radius: var(--form-border-raduis);
   padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  width: 100%;
-  padding: 0.5rem 0.75rem;
   color: #2e2e2b;
   cursor: pointer;
 
@@ -45,11 +51,10 @@ input {
   }
 }
 
-.placeholder-content {
-  height: 100%;
-  min-height: 450px;
-  width: 100%;
-  background-color: rgb(247, 243, 243);
+a {
+  cursor: pointer;
+  color: var(--base-text-color);
+  text-decoration: none;
 }
 
 /* @media (prefers-color-scheme: light) {
