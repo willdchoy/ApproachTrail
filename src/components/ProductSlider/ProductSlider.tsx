@@ -1,18 +1,15 @@
+import "./ProductSlider.css";
+import { products } from "./products.js";
 import ProductSlide from "@/components/ProductSlide/ProductSlide";
-import northFaceLogo from "@/assets/north-face-logo.svg";
-import ProductExample from "@/assets/product-example.avif";
 
 function ProductSlider() {
-  const productProps = {
-    title: "Hydrenalite™ Down Hoodie",
-    logoText: "The North Face",
-    logoImgSrc: northFaceLogo,
-    description: "",
-    sex: "Men's",
-    productImgSrc: ProductExample,
-  };
-
-  return <ProductSlide {...productProps} />;
+  return (
+    <div className="product-slider">
+      {products.map((product) => {
+        return <ProductSlide key={product.id} {...product} />;
+      })}
+    </div>
+  );
 }
 
 export default ProductSlider;

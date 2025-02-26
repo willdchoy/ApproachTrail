@@ -3,6 +3,7 @@ import SocialIcons from "@/components/SocialIcons/Socialcons";
 import RedirectToAffiliate from "../RedirectToAffiliate/RedirectToAffiliate";
 
 interface ProductSlideProps {
+  id: number;
   title: string;
   logoImgSrc: string;
   logoText: string;
@@ -11,6 +12,7 @@ interface ProductSlideProps {
 }
 
 function ProductSlide({
+  id,
   title,
   // logoImgSrc,
   logoText,
@@ -37,6 +39,7 @@ function ProductSlide({
 
         <div className="product-title">
           <a href="#">
+            {id}
             {sex} {title}
           </a>
         </div>
