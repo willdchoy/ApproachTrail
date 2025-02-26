@@ -12,7 +12,6 @@ interface ProductSlideProps {
 }
 
 function ProductSlide({
-  id,
   title,
   // logoImgSrc,
   logoText,
@@ -31,15 +30,11 @@ function ProductSlide({
         <div className="product-logo">
           <a href="#">
             <span>{logoText}</span>
-            {/* <div className="product-logo">
-              <img src={logoImgSrc} />
-            </div> */}
           </a>
         </div>
 
         <div className="product-title">
           <a href="#">
-            {id}
             {sex} {title}
           </a>
         </div>
