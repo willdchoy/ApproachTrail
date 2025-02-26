@@ -9,38 +9,35 @@
 }
 
 header {
+  display: grid;
+  gap: 0px;
+  grid-template-areas:
+    "logo user"
+    "search search";
+  align-items: center;
+
+  background-color: #0d1a34;
+  color: white;
+  border: 1px solid red;
+
   h1 {
     margin: 0;
   }
 
-  .wrapper {
-    display: grid;
-    gap: 0px;
-    align-items: top;
-    grid-template-areas:
-      "logo user"
-      "search search";
-
-    width: 100vw;
-    background-color: #0d1a34;
-
-    & > div:nth-child(3) {
-      text-align: right;
-      margin-right: 10px;
-    }
+  div.user-menu {
+    justify-self: right;
+    margin-right: 25px;
   }
 }
 
 @media (min-width: 500px) {
-  header .wrapper {
+  header {
     gap: 20px;
-    /* grid-template-columns: 170px 1fr 60px; */
+    grid-template-columns: 170px 1fr 60px;
     grid-template-areas: "logo search user";
 
-    height: 50px;
-
-    & > div:nth-child(3) {
-      text-align: center;
+    div.user-menu {
+      justify-self: center;
     }
   }
 }

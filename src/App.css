@@ -14,7 +14,7 @@
   grid-area: footer;
 }
 
-.wrapper {
+.app-wrapper {
   display: grid;
   gap: 20px;
   row-gap: 0;

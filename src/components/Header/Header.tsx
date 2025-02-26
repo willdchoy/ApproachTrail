@@ -6,11 +6,9 @@ import "./Header.css";
 function Header() {
   return (
     <header className="main-head">
-      <div className="wrapper">
-        <Logo />
-        <Search />
-        <UserMenu />
-      </div>
+      <Logo />
+      <Search />
+      <UserMenu />
     </header>
   );
 }

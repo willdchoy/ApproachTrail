@@ -3,6 +3,7 @@
 
   input {
     width: 100%;
+    max-width: 800px;
     font: 1.25rem / 1.5 sans-serif;
     padding: 0.5rem 0.75rem;
   }
