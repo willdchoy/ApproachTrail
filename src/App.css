@@ -17,6 +17,7 @@
 .wrapper {
   display: grid;
   gap: 20px;
+  row-gap: 0;
   grid-template-columns: 1fr;
   grid-template-areas:
     "header"

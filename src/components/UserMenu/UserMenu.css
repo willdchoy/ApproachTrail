@@ -1,7 +1,12 @@
 .user-menu {
-  margin-right: 5px;
+  margin-right: var();
 
   a img {
     width: 45px;
+  }
+
+  .fa-person-hiking {
+    color: white;
+    font-size: 30px;
   }
 }

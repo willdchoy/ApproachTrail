@@ -8,30 +8,36 @@
   grid-area: user;
 }
 
-header .wrapper {
-  display: grid;
-  gap: 0px;
-  align-items: center;
-  grid-template-areas:
-    "logo user"
-    "search search";
+header {
+  h1 {
+    margin: 0;
+  }
 
-  width: 100vw;
-  background: #ddd2b2;
+  .wrapper {
+    display: grid;
+    gap: 0px;
+    align-items: top;
+    grid-template-areas:
+      "logo user"
+      "search search";
 
-  & > div:nth-child(3) {
-    text-align: right;
-    margin-right: 10px;
+    width: 100vw;
+    background-color: #0d1a34;
+
+    & > div:nth-child(3) {
+      text-align: right;
+      margin-right: 10px;
+    }
   }
 }
 
 @media (min-width: 500px) {
   header .wrapper {
     gap: 20px;
-    grid-template-columns: 70px 1fr 60px;
+    /* grid-template-columns: 170px 1fr 60px; */
     grid-template-areas: "logo search user";
 
-    height: 80px;
+    height: 50px;
 
     & > div:nth-child(3) {
       text-align: center;

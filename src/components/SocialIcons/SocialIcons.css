@@ -7,10 +7,10 @@ ul.social-icons {
     color: var(--base-text-color);
     display: inline-block;
     margin-right: 10px;
+    cursor: pointer;
 
     i:hover {
-      cursor: pointer;
-      color: #990000;
+      color: rgb(226, 62, 87);
     }
   }
 }

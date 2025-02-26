@@ -1,5 +1,6 @@
 import "./ProductSlide.css";
 import SocialIcons from "@/components/SocialIcons/Socialcons";
+import RedirectToAffiliate from "../RedirectToAffiliate/RedirectToAffiliate";
 
 interface ProductSlideProps {
   title: string;
@@ -11,28 +12,39 @@ interface ProductSlideProps {
 
 function ProductSlide({
   title,
-  logoImgSrc,
+  // logoImgSrc,
   logoText,
   sex,
   productImgSrc,
 }: ProductSlideProps) {
   return (
     <div className="product-slide">
-      <a href="#">
-        <img className="product-image" src={productImgSrc} alt={title} />
-      </a>
-      <h3 className="product-title">
+      <div className="product-image">
         <a href="#">
-          <div className="product-logo">
-            <img src={logoImgSrc} />
+          <img src={productImgSrc} alt={title} />
+        </a>
+      </div>
+
+      <div className="product-details">
+        <div className="product-logo">
+          <a href="#">
             <span>{logoText}</span>
-          </div>
-        </a>
-        <a className="product-title-text">
-          {sex} {title}
-        </a>
-      </h3>
-      <SocialIcons />
+            {/* <div className="product-logo">
+              <img src={logoImgSrc} />
+            </div> */}
+          </a>
+        </div>
+
+        <div className="product-title">
+          <a href="#">
+            {sex} {title}
+          </a>
+        </div>
+        <div className="product-action">
+          <SocialIcons />
+          <RedirectToAffiliate />
+        </div>
+      </div>
     </div>
   );
 }
