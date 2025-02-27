@@ -6,14 +6,19 @@
   font-weight: 300;
   font-style: normal;
 
-  color-scheme: light dark;
-  color: #0c0b08bf;
-  background-color: #0d1a34;
+  --font-size-xs: 10px;
+  --font-size-xd: 12px;
+  --font-size-lg: 20px;
+  --font-size-xl: 10px;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  color-scheme: light dark;
+  color: #ffffff;
+  background-color: #22282a;
 
   --base-border-radius: 3px;
   --form-border-raduis: var(--base-border-radius);

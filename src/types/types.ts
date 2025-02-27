@@ -1,3 +1,5 @@
+export type BrandNames = "The North Face";
+
 export type Product = {
   id: number;
   title: string;
@@ -8,4 +10,15 @@ export type Product = {
   productImgSrc: string;
 };
 
-export type Category = "men's-jackets" | "women's-jackets";
+export type Categories = "mens-jackets" | "womens-jackets";
+
+type CategoryMetaData = {
+  brandName: string; //TODO change to BrandNames?
+  categoryName: string;
+  categoryId: string; //TODO change to Categories?
+};
+
+export type CategoryData = {
+  metadata: CategoryMetaData;
+  products: Product[];
+};
