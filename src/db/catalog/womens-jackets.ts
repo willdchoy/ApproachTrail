@@ -2,7 +2,7 @@ import northFaceLogo from "@/assets/north-face-logo.svg";
 import ProductExample from "@/assets/product-example.avif";
 
 export const womensJackets = {
-  ["womens-jackets"]: [
+  ["women's-jackets"]: [
     {
       id: 1000,
       title: "Hydrenalite™ Down Hoodie",

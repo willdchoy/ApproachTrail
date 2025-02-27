@@ -5,12 +5,12 @@ import { generateHeadingFromCategory } from "@/utils/generateHeadingFromCategory
 import ProductSlide from "@/components/ProductSlide/ProductSlide";
 
 function ProductSlider() {
-  const catetory = "mens-jackets";
-  const products = getFromDB(catetory);
+  const category = "men's-jackets";
+  const products = getFromDB(category);
 
   return (
     <div className="product-slider">
-      <h2>{generateHeadingFromCategory(catetory)}</h2>
+      <h2>{generateHeadingFromCategory(category)}</h2>
       <div className="products">
         {products.map((product: Product) => {
           return <ProductSlide key={product.id} {...product} />;

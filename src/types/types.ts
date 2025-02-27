@@ -8,4 +8,4 @@ export type Product = {
   productImgSrc: string;
 };
 
-export type Category = "mens-jackets" | "womens-jackets";
+export type Category = "men's-jackets" | "women's-jackets";
