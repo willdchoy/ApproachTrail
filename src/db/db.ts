@@ -7,8 +7,6 @@ export const products = {
   ...womensJackets,
 };
 
-console.log(products);
-
 export function getFromDB(category: Category): Product[] {
   return products[category];
 }
