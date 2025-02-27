@@ -1,10 +1,13 @@
 .product-slider {
-  width: 100%;
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
+  .products {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
 
-  @media (min-width: 480px) {
-    flex-direction: row;
+    @media (min-width: 768px) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
   }
 }
