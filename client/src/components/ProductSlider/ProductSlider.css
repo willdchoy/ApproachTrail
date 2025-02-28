@@ -14,16 +14,18 @@
     margin: 1px;
 
     @media (min-width: 500px) {
-      max-width: 400px;
       flex: 1 0 40%;
+      max-width: 49.8%;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 768px) and (max-width: 1023px) {
       flex: 1 0 30%;
+      max-width: 33.333%;
     }
 
     @media (min-width: 1024px) {
-      flex: 1 22%;
+      flex: 1 0 22%;
+      max-width: 24.9%;
     }
   }
 }

@@ -20,6 +20,16 @@ export const mensJackets = {
         type: "rain",
       },
       {
+        id: 1000,
+        title: "Hydrenalite™ Down Hoodie",
+        logoText: "The North Face",
+        logoImgSrc: northFaceLogo,
+        description: "",
+        sex: "Men's",
+        productImgSrc: ProductExample,
+        type: "rain",
+      },
+      {
         id: 1001,
         title: "Hydrenalite™ Down Hoodie",
         logoText: "The North Face",
