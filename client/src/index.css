@@ -87,6 +87,11 @@ button {
   cursor: pointer;
 }
 
+/* dev classes */
+.dev-border {
+  border: 1px solid red;
+}
+
 /* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
