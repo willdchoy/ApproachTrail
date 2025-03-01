@@ -18,7 +18,9 @@
 
   color-scheme: light dark;
   color: #ffffff;
-  background-color: #22282a;
+  --color-primary-dark: #1e1e24;
+  --color-primary-light: #e54b4b;
+  background-color: var(--color-primary-dark);
 
   --base-border-radius: 3px;
   --form-border-raduis: var(--base-border-radius);
