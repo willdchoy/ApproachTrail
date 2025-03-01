@@ -1,5 +1,5 @@
 import northFaceLogo from "@/assets/north-face-logo.svg";
-import ProductExample from "@/assets/product-example.avif";
+import ProductExample from "@/assets/ep.avif";
 
 export const womensJackets = {
   ["womens-jackets"]: {

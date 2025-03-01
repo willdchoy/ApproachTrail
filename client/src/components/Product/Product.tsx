@@ -15,7 +15,7 @@ function Product({
   title,
   // logoImgSrc,
   logoText,
-  sex,
+  // sex,
   productImgSrc,
 }: ProductProps) {
   return (
@@ -34,9 +34,7 @@ function Product({
         </div>
 
         <div className="product-title">
-          <a href="#">
-            {sex} {title}
-          </a>
+          <a href="#">{title}</a>
         </div>
         <div className="product-action">
           <SocialIcons />
