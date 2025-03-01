@@ -1,20 +1,19 @@
 import "./ProductList.css";
-import { Product } from "@/types/types";
+import { Product as TProduct } from "@/types/types";
 import { getCategoryFromDB } from "@/db/db.js";
+import Product from "@/components/Product/Product";
 
 function ProductList() {
-  const category = "womens-jackets";
+  const category = "mens-jackets";
   const mensJackets = getCategoryFromDB(category);
 
   return (
     <div className="product-list">
-      {mensJackets?.products.map((product: Product, index: number) => {
-        return (
-          <div key={index} className="product">
-            {product.title}
-          </div>
-        );
-      })}
+      {mensJackets?.products
+        ? mensJackets?.products.map((product: TProduct) => {
+            return <Product key={product.id} {...product} />;
+          })
+        : "No products available."}
     </div>
   );
 }
