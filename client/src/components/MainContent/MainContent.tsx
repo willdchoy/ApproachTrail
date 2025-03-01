@@ -1,12 +1,12 @@
 import "./MainContent.css";
-import ProductSlider from "@/components/ProductSlider/ProductSlider";
+import ProductList from "@/components/ProductList/ProductList";
 import ErrorBoundary from "../ErrorBoundry/ErrorBoundry";
 
 function MainContent() {
   return (
     <main className="main-content content">
       <ErrorBoundary>
-        <ProductSlider />
+        <ProductList />
       </ErrorBoundary>
     </main>
   );

@@ -1,8 +1,8 @@
-import "./ProductSlider.css";
+import "./ProductList.css";
 import { Product } from "@/types/types";
 import { getCategoryFromDB } from "@/db/db.js";
 
-function ProductSlider() {
+function ProductList() {
   const category = "mens-jackets";
   const mensJackets = getCategoryFromDB(category);
 
@@ -19,4 +19,4 @@ function ProductSlider() {
   );
 }
 
-export default ProductSlider;
+export default ProductList;
