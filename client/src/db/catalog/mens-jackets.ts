@@ -1,8 +1,8 @@
 import northFaceLogo from "@/assets/north-face-logo.svg";
 import ProductExample from "@/assets/product-example.avif";
-import { CategoryData } from "@/types/types";
+import { CategoryDataRaw } from "@/types/types";
 
-export const mensJackets: CategoryData = {
+export const mensJackets: CategoryDataRaw = {
   ["mens-jackets"]: {
     metadata: {
       brandName: "The North Face",

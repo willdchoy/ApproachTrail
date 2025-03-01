@@ -1,4 +1,4 @@
-import { Categories, CategoryData } from "@/types/types";
+import { CategoryId, CategoryData } from "@/types/types";
 import { mensJackets } from "./catalog/mens-jackets";
 import { womensJackets } from "./catalog/womens-jackets";
 
@@ -7,6 +7,9 @@ export const products = {
   ...womensJackets,
 };
 
-export function getCategoryFromDB(category: Categories): CategoryData {
-  return products[category];
+export function getCategoryFromDB(
+  category: CategoryId
+): CategoryData | undefined {
+  // TODO: DO we have to cast?
+  return products[category] as CategoryData;
 }

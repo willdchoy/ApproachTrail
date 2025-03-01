@@ -21,9 +21,14 @@ type CategoryMetaData = {
   categoryId: CategoryId;
 };
 
-export type CategoryData = {
+export type CategoryDataRaw = {
   [key in CategoryId]?: {
     metadata: CategoryMetaData;
     products: Product[];
   };
+};
+
+export type CategoryData = {
+  metadata: CategoryMetaData;
+  products: Product[];
 };
