@@ -1,12 +1,13 @@
 import northFaceLogo from "@/assets/north-face-logo.svg";
 import ProductExample from "@/assets/product-example.avif";
+import { CategoryData } from "@/types/types";
 
-export const mensJackets = {
+export const mensJackets: CategoryData = {
   ["mens-jackets"]: {
     metadata: {
       brandName: "The North Face",
       categoryName: "Men's Jackets",
-      categoryId: "mens-jacket",
+      categoryId: "mens-jackets",
     },
     products: [
       {
@@ -77,6 +78,7 @@ export const mensJackets = {
         description: "",
         sex: "Men's",
         productImgSrc: ProductExample,
+        type: "rain",
       },
       {
         id: 1006,

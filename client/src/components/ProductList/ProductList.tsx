@@ -6,8 +6,11 @@ function ProductList() {
   const category = "mens-jackets";
   const mensJackets = getCategoryFromDB(category);
 
+  console.log(mensJackets);
+
   return (
-    <div className="product-list dev-border">
+    <div className="product-list">
+      {/* why is the typing off??????? */}
       {mensJackets.products.map((product: Product, index: number) => {
         return (
           <div key={index} className="product">

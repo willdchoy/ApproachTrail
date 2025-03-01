@@ -11,11 +11,12 @@
     height: 500px;
     width: 100%;
     background-color: antiquewhite;
-    margin: 1px;
+    margin-bottom: 2px;
 
     @media (min-width: 500px) {
       flex: 1 0 40%;
       max-width: 49.8%;
+      margin: 1px;
     }
 
     @media (min-width: 768px) and (max-width: 1023px) {
