@@ -34,7 +34,6 @@ header {
     gap: 20px;
     grid-template-columns: 170px 1fr 60px;
     grid-template-areas: "logo search user";
-    margin-bottom: 10px;
 
     div.user-menu {
       justify-self: center;
