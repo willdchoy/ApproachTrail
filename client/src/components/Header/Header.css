@@ -16,7 +16,7 @@ header {
     "search search";
   align-items: center;
 
-  background-color: #22282a;
+  background-color: var(--color-primary-dark);
   color: white;
 
   h1 {
