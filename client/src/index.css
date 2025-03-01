@@ -28,13 +28,13 @@
   --breakpoint-mobile: 480px;
   --breakpoint-tablet: 768px;
   --breakpoint-laptop: 1280px;
-  --breakpoint-desktop: 1440px;
+  --breakpoint-desktop: 1430px;
 }
 
 body {
   margin: 0 auto;
   box-sizing: border-box;
-  max-width: 1024px;
+  max-width: var(--breakpoint-desktop);
 }
 
 h1,

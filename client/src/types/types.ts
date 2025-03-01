@@ -1,4 +1,8 @@
 export type BrandNames = "The North Face";
+export type CategoryId = "mens-jackets" | "womens-jackets";
+export type CategoryType = "rain";
+export type CategoryName = "Men's Jackets" | "Women's Jackets";
+export type Sex = "Men's" | "Women's";
 
 export type Product = {
   id: number;
@@ -6,19 +10,20 @@ export type Product = {
   logoText: string;
   logoImgSrc: string;
   description: string;
-  sex: string;
+  sex: Sex;
   productImgSrc: string;
+  type: CategoryType;
 };
 
-export type Categories = "mens-jackets" | "womens-jackets";
-
 type CategoryMetaData = {
-  brandName: string; //TODO change to BrandNames?
-  categoryName: string;
-  categoryId: string; //TODO change to Categories?
+  brandName: BrandNames;
+  categoryName: CategoryName;
+  categoryId: CategoryId;
 };
 
 export type CategoryData = {
-  metadata: CategoryMetaData;
-  products: Product[];
+  [key in CategoryId]?: {
+    metadata: CategoryMetaData;
+    products: Product[];
+  };
 };
