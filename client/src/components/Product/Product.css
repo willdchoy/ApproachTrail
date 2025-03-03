@@ -15,10 +15,9 @@
   .product-image {
     display: flex;
     justify-content: center;
-    background-size: contain;
-    background-repeat: no-repeat;
+    border-bottom: 1px solid rgb(239, 237, 237);
 
-    @media (min-width: 768px) {
+    @media (min-width: 500px) {
       height: 350px;
     }
 
@@ -27,10 +26,6 @@
       height: 100%;
       object-fit: contain;
     }
-
-    /* @media (min-width: 768px) {
-      max-width: 375px;
-    } */
   }
 
   .product-details {
