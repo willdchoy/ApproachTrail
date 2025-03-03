@@ -49,5 +49,5 @@ CREATE TABLE backpack (
 CREATE TABLE backpack_item (
   id INT PRIMARY KEY,
   backpack_id INT references backpack(id),
-  product_item_is INT references product_item(id)
+  product_item_id INT references product_item(id)
 )
