@@ -27,14 +27,15 @@ function Product({
       </div>
 
       <div className="product-details">
-        <div className="product-logo">
-          <a href="#">
-            <span>{logoText}</span>
-          </a>
-        </div>
-
         <div className="product-title">
-          <a href="#">{title}</a>
+          <div className="product-logo">
+            <a href="#">
+              <span>{logoText}</span>
+            </a>
+          </div>
+          <a href="#">
+            <h5>{title}</h5>
+          </a>
         </div>
         <div className="product-action">
           <SocialIcons />
