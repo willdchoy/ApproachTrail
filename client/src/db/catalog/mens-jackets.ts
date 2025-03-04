@@ -5,7 +5,6 @@ import ProductExample11 from "@/assets/ep11.webp";
 import ProductExample5 from "@/assets/ep5.avif";
 import ProductExample6 from "@/assets/ep6.avif";
 import { CategoryDataRaw } from "@/types/types";
-import ProductExample7 from "@/assets/ep7.jpg";
 import ProductExample8 from "@/assets/ep8.jpg";
 import ProductExample9 from "@/assets/ep9.jpg";
 import ProductExample10 from "@/assets/ep10.avif";
