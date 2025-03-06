@@ -10,7 +10,7 @@ fastify.get("/categories", async (req, reply) => {
   const client = await fastify.pg.connect();
   try {
     const { rows } = await client.query("SELECT * from product_category");
-    return rows;
+    reply.send(rows);
   } finally {
     client.release();
   }
@@ -20,7 +20,7 @@ fastify.get("/products", async (req, reply) => {
   const client = await fastify.pg.connect();
   try {
     const { rows } = await client.query("SELECT * FROM product");
-    return rows;
+    reply.send(rows);
   } finally {
     client.release();
   }
@@ -33,7 +33,7 @@ fastify.get("/products/:id", async (req, reply) => {
       "SELECT * FROM product WHERE product_id=$1",
       [req.params.id]
     );
-    return rows;
+    reply.send(rows);
   } finally {
     client.release();
   }
