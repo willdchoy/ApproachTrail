@@ -1,7 +1,23 @@
 const fastify = require("fastify")({
-  logger: true,
+  logger: false,
 });
 
+// cors
+fastify.register(require("@fastify/cors"), {
+  origin: (origin, cb) => {
+    const hostname = new URL(origin).hostname;
+    if (hostname === "localhost") {
+      //  Request from localhost will pass
+      cb(null, true);
+      return;
+    }
+    // Generate an error on other origins, disabling access
+    cb(new Error("Not allowed"), false);
+  },
+  methods: ["GET"],
+});
+
+// postgres
 fastify.register(require("@fastify/postgres"), {
   connectionString: "postgres://admin:admin@localhost/approach_trail",
 });
@@ -19,7 +35,9 @@ fastify.get("/categories", async (req, reply) => {
 fastify.get("/products", async (req, reply) => {
   const client = await fastify.pg.connect();
   try {
-    const { rows } = await client.query("SELECT * FROM product");
+    const { rows } = await client.query(
+      "SELECT * FROM product JOIN product_brand on product.brand_id = product_brand.product_brand_id"
+    );
     reply.send(rows);
   } finally {
     client.release();

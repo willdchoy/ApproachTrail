@@ -1,5 +1,5 @@
 export async function get<T>(url: string): Promise<T> {
-  const baseUrl = "https://swapi.dev/api/";
+  const baseUrl = "http://localhost:3000";
   const response = await fetch(`${baseUrl}${url}`);
 
   if (!response.ok) {
@@ -11,7 +11,7 @@ export async function get<T>(url: string): Promise<T> {
 
 // add payload parm, figure out typing
 export async function post<T>(url: string): Promise<T> {
-  const baseUrl = "https://swapi.dev/api/";
+  const baseUrl = "http://localhost:3000";
   const response = await fetch(`${baseUrl}${url}`, {
     method: "POST",
     headers: {

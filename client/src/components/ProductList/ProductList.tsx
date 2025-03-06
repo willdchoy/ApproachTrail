@@ -1,17 +1,19 @@
 import "./ProductList.css";
 import { Product as TProduct } from "@/types/types";
-import { getCategoryFromDB } from "@/db/db.js";
 import Product from "@/components/Product/Product";
+import { useService } from "@/hooks/useService";
 
 function ProductList() {
-  const category = "mens-jackets";
-  const mensJackets = getCategoryFromDB(category);
+  const { isLoading, error, data } = useService("/products");
+  const products = data as TProduct[];
+
+  console.log(isLoading, error, data);
 
   return (
     <div className="product-list">
-      {mensJackets?.products
-        ? mensJackets?.products.map((product: TProduct) => {
-            return <Product key={product.id} {...product} />;
+      {products
+        ? products.map((product: TProduct) => {
+            return <Product key={product.product_id} {...product} />;
           })
         : "No products available."}
     </div>
