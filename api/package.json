@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "pnpm nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,7 +13,8 @@
   "packageManager": "pnpm@10.4.1",
   "devDependencies": {
     "@types/node": "^22.13.9",
-    "@types/pg": "^8.11.11"
+    "@types/pg": "^8.11.11",
+    "nodemon": "^3.1.9"
   },
   "dependencies": {
     "@fastify/postgres": "^6.0.2",

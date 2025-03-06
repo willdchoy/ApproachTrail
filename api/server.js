@@ -6,6 +6,16 @@ fastify.register(require("@fastify/postgres"), {
   connectionString: "postgres://admin:admin@localhost/approach_trail",
 });
 
+fastify.get("/categories", async (req, reply) => {
+  const client = await fastify.pg.connect();
+  try {
+    const { rows } = await client.query("SELECT * from product_category");
+    return rows;
+  } finally {
+    client.release();
+  }
+});
+
 fastify.get("/products", async (req, reply) => {
   const client = await fastify.pg.connect();
   try {
