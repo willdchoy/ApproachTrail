@@ -5,6 +5,7 @@ services:
     container_name: AT
     volumes:
       - ./sql:/docker-entrypoint-initdb.d
+      - ./seed:/var/data/postgres/seed
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin

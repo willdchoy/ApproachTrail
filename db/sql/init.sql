@@ -78,3 +78,21 @@ CREATE TABLE IF NOT EXISTS backpack_item (
   product_item_id INT references product_item(product_item_id),
   quantity INT
 );
+
+-- brands
+COPY product_brand(product_brand_id,brand_name,brand_description)
+FROM '/var/data/postgres/seed/seed-brand.csv'
+DELIMITER ','
+CSV HEADER;
+
+-- -- Seed DB
+COPY product_category(product_category_id,category_name)
+FROM '/var/data/postgres/seed/seed-category.csv'
+DELIMITER ','
+CSV HEADER;
+
+-- products
+COPY product(product_id,name,description,brand_id,category_id)
+FROM '/var/data/postgres/seed/seed-product.csv'
+DELIMITER ','
+CSV HEADER;
