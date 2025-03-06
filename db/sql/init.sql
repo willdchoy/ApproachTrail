@@ -92,7 +92,7 @@ DELIMITER ','
 CSV HEADER;
 
 -- products
-COPY product(product_id,name,description,brand_id,category_id)
+COPY product(product_id,name,brand_id,category_id)
 FROM '/var/data/postgres/seed/seed-product.csv'
 DELIMITER ','
 CSV HEADER;
