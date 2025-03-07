@@ -1,27 +1,33 @@
-const fastify = require("fastify")({
-  logger: false,
+import Fastify from "fastify";
+
+const fastify = Fastify({
+  logger: true,
 });
 
-const ALLOWED_ORIGINS = ["localhost"];
+const ALLOWED_ORIGINS = ["localhost", null];
 const ALLOWED_METHODS = ["GET"];
 
-// enable cors
-fastify.register(require("@fastify/cors"), {
+fastify.register(import("@fastify/cors"), {
   origin: (origin, cb) => {
-    const hostname = new URL(origin).hostname;
+    const hostname = origin ? new URL(origin).hostname : null;
+
     if (ALLOWED_ORIGINS.includes(hostname)) {
       cb(null, true);
       return;
     }
-    cb(new Error("This is not a valid"), false);
+    cb(new Error("Invalid hostname"), false);
   },
   methods: ALLOWED_METHODS,
 });
 
 // postgres
-fastify.register(require("@fastify/postgres"), {
+fastify.register(import("@fastify/postgres"), {
   connectionString: "postgres://admin:admin@localhost/approach_trail",
 });
+
+/**
+ * routes
+ */
 
 fastify.get("/categories", async (req, reply) => {
   const client = await fastify.pg.connect();
@@ -37,9 +43,9 @@ fastify.get("/products", async (req, reply) => {
   const client = await fastify.pg.connect();
   try {
     const { rows } = await client.query(
-      `SELECT * 
+      `SELECT *
        FROM product as p
-       JOIN product_brand as pb 
+       JOIN product_brand as pb
        ON p.brand_id = pb.product_brand_id`
     );
     reply.send(rows);

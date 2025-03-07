@@ -1,11 +1,10 @@
 {
-  "name": "server",
+  "name": "approach_trail_api",
   "version": "1.0.0",
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "start": "pnpm nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "pnpm nodemon server.js"
   },
   "keywords": [],
   "author": "",
