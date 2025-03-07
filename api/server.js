@@ -2,19 +2,20 @@ const fastify = require("fastify")({
   logger: false,
 });
 
-// cors
+const ALLOWED_ORIGINS = ["localhost"];
+const ALLOWED_METHODS = ["GET"];
+
+// enable cors
 fastify.register(require("@fastify/cors"), {
   origin: (origin, cb) => {
     const hostname = new URL(origin).hostname;
-    if (hostname === "localhost") {
-      //  Request from localhost will pass
+    if (ALLOWED_ORIGINS.includes(hostname)) {
       cb(null, true);
       return;
     }
-    // Generate an error on other origins, disabling access
-    cb(new Error("Not allowed"), false);
+    cb(new Error("This is not a valid"), false);
   },
-  methods: ["GET"],
+  methods: ALLOWED_METHODS,
 });
 
 // postgres
@@ -36,7 +37,10 @@ fastify.get("/products", async (req, reply) => {
   const client = await fastify.pg.connect();
   try {
     const { rows } = await client.query(
-      "SELECT * FROM product JOIN product_brand on product.brand_id = product_brand.product_brand_id"
+      `SELECT * 
+       FROM product as p
+       JOIN product_brand as pb 
+       ON p.brand_id = pb.product_brand_id`
     );
     reply.send(rows);
   } finally {
@@ -48,7 +52,9 @@ fastify.get("/products/:id", async (req, reply) => {
   const client = await fastify.pg.connect();
   try {
     const { rows } = await client.query(
-      "SELECT * FROM product WHERE product_id=$1",
+      `SELECT *
+       FROM product
+       WHERE product_id=$1`,
       [req.params.id]
     );
     reply.send(rows);
