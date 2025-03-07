@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "start": "pnpm nodemon server.js"
+    "start": "pnpm nodemon --env-file=.dev.env server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,7 @@
     "nodemon": "^3.1.9"
   },
   "dependencies": {
+    "@fastify/autoload": "^6.1.0",
     "@fastify/cors": "^11.0.0",
     "@fastify/postgres": "^6.0.2",
     "fastify": "^5.2.1"
