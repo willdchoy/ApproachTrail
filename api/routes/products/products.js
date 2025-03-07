@@ -4,9 +4,9 @@ export default async function (fastify, opts) {
     try {
       const { rows } = await client.query(
         `SELECT *
-             FROM product as p
-             JOIN product_brand as pb
-             ON p.brand_id = pb.product_brand_id`
+          FROM product as p
+          JOIN product_brand as pb
+          ON p.brand_id = pb.product_brand_id`
       );
       reply.send(rows);
     } finally {
