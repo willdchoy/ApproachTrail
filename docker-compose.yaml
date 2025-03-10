@@ -4,6 +4,10 @@ services:
       file: ./db/docker-compose.yaml
       service: db
 
+  api:
+    extends:
+      file: ./api/docker-compose.yaml
+      service: api
   web:
     extends:
       file: ./client/docker-compose.yaml

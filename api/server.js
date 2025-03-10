@@ -34,15 +34,19 @@ fastify.register(import("@fastify/cors"), {
 });
 
 // postgres
+const connectionString = `postgres://${process.env.POSTGRES_USER}:${process.env.POSTGRES_PASSWORD}@${process.env.POSTGRES_SERVER}:/approach_trail`;
 fastify.register(import("@fastify/postgres"), {
-  connectionString: `postgres://${process.env.POSTGRES_USER}:${process.env.POSTGRES_PASSWORD}@${process.env.POSTGRES_SERVER}/approach_trail`,
+  connectionString,
 });
 
 // server
-fastify.listen({ port: process.env.PORT }, function (err, address) {
-  if (err) {
-    fastify.log.error(err);
-    process.exit(1);
+fastify.listen(
+  { port: process.env.PORT, host: process.env.HOST },
+  function (err, address) {
+    if (err) {
+      fastify.log.error(err);
+      process.exit(1);
+    }
+    console.log(`Server is now listening on ${address}`);
   }
-  console.log(`Server is now listening on ${address}`);
-});
+);
