@@ -15,7 +15,7 @@ function ProductList() {
         ? products.map((product: TProduct) => {
             return <Product key={product.product_id} {...product} />;
           })
-        : "No products available."}
+        : "No products available!"}
     </div>
   );
 }

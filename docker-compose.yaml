@@ -1,5 +1,10 @@
 services:
   db:
     extends:
-      file: ./db/docker-db-services.yaml
-      service: base
+      file: ./db/docker-compose.yaml
+      service: db
+
+  web:
+    extends:
+      file: ./client/docker-compose.yaml
+      service: web

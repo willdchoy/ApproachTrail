@@ -1,8 +1,8 @@
 services:
-  base:
+  db:
     image: postgres
     restart: always
-    container_name: AT
+    container_name: db
     volumes:
       - ./sql:/docker-entrypoint-initdb.d
       - ./seed:/var/data/postgres/seed

@@ -6,6 +6,7 @@
   "scripts": {
     "start": "pnpm nodemon --env-file=.dev.env server.js"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
