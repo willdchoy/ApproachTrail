@@ -1,0 +1,5 @@
+services:
+  db:
+    extends:
+      file: ./db/docker-db-services.yaml
+      service: base

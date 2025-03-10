@@ -1,5 +1,5 @@
 services:
-  db:
+  base:
     image: postgres
     restart: always
     container_name: AT

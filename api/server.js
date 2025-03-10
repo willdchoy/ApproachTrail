@@ -12,10 +12,11 @@ const ALLOWED_METHODS = ["GET"];
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// autoload routes
 fastify.register(autoLoad, {
   dir: path.join(__dirname, "routes"),
   dirNameRoutePrefix: false,
-  options: { prefix: "/api/v1/" },
+  options: { prefix: "/api/v1" },
 });
 
 // enable CORS
