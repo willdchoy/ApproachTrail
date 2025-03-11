@@ -6,18 +6,20 @@ This repo includes all services required to deploy the development version of th
 
 Install [Docker](https://www.docker.com/get-started/)
 
-Install Homebrew package manager `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+Install Homebrew package manager: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
-Install NodeJS `brew install node`
+Install NodeJS: `brew install node`
 
-Install Git `brew install git`
+Install Git: `brew install git`
 
 Setup [ssh](https://docs.github.com/en/enterprise-cloud@latest/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) on Github
 
-Clone the repo `git clone git@github.com:willdchoy/ApproachTrail.git`
+Clone the repo: `git clone git@github.com:willdchoy/ApproachTrail.git`
 
-`cd ApproachTrail`
+Change into ApproachTrail directory: `cd ApproachTrail`
 
-Start ApproachTrail infra `bash docker-start.sh`
+Install npm packages: `bash setup.sh`
 
-Stop ApproachTrail infra `bash docker-stop.sh`
+Start ApproachTrail infra: `bash docker-start.sh`
+
+Stop ApproachTrail infra: `bash docker-stop.sh`
