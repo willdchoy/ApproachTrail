@@ -25,3 +25,5 @@ Install npm packages: `bash setup.sh`
 Start ApproachTrail infra: `bash docker-start.sh`
 
 Stop ApproachTrail infra: `bash docker-stop.sh`
+
+View web app: `http://localhost:5173`
