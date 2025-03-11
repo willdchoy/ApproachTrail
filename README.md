@@ -1,6 +1,6 @@
 # ApproachTrail Monorepo
 
-This repo includes all services required to deploy the development version of the AT stack.
+This repo includes all services required to deploy the development environment.
 
 ## Installation steps
 
