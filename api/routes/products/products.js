@@ -8,7 +8,6 @@ export default async function (fastify, opts) {
           JOIN product_brand as pb
           ON p.brand_id = pb.product_brand_id`
       );
-
       reply.send(rows);
     } catch (e) {
       console.log("ERROR - ", e);
