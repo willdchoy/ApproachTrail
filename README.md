@@ -20,6 +20,8 @@ Clone the repo: `git clone git@github.com:willdchoy/ApproachTrail.git`
 
 Change into ApproachTrail directory: `cd ApproachTrail`
 
+Change to the dev branch: `git checkout dev`
+
 Install npm packages: `bash setup.sh`
 
 Start ApproachTrail infra: `bash docker-start.sh`
