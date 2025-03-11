@@ -3,12 +3,30 @@ services:
     extends:
       file: ./db/docker-compose.yaml
       service: db
+    restart: always
+    networks:
+      - backend
 
   api:
     extends:
       file: ./api/docker-compose.yaml
       service: api
+    depends_on:
+      - db
+    restart: always
+    networks:
+      - backend
+
   web:
     extends:
       file: ./client/docker-compose.yaml
       service: web
+    depends_on:
+      - api
+    restart: always
+    networks:
+      - frontend
+
+networks:
+  backend:
+  frontend:
