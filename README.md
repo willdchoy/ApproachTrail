@@ -6,6 +6,8 @@ This repo includes all services required to deploy the development version of th
 
 Install [Docker](https://www.docker.com/get-started/)
 
+Install [VSCode](https://code.visualstudio.com/)
+
 Install Homebrew package manager: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
 Install NodeJS: `brew install node`
