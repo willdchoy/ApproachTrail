@@ -1,5 +1,4 @@
 import Fastify from "fastify";
-import autoLoad from "@fastify/autoload";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -12,15 +11,22 @@ const ALLOWED_METHODS = ["GET"];
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// rate limiter
+await fastify.register(import("@fastify/rate-limit"), {
+  max: process.env.RATE_LIMITER_MAX,
+  timeWindow: process.env.RATE_LIMITER_TIME_WINDOW,
+  allowList: process.env.RATE_LIMITER_ALLOW_LIST,
+});
+
 // autoload routes
-fastify.register(autoLoad, {
+await fastify.register(import("@fastify/autoload"), {
   dir: path.join(__dirname, "routes"),
   dirNameRoutePrefix: false,
   options: { prefix: "/api/v1" },
 });
 
 // enable CORS
-fastify.register(import("@fastify/cors"), {
+await fastify.register(import("@fastify/cors"), {
   origin: (origin, cb) => {
     const hostname = origin ? new URL(origin).hostname : null;
 
