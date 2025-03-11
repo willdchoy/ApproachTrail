@@ -1,13 +1,25 @@
 {
-  "name": "server",
+  "name": "approach_trail_api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "pnpm nodemon --env-file=.dev.env server.js"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.4.1"
+  "packageManager": "pnpm@10.4.1",
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "@types/pg": "^8.11.11",
+    "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "@fastify/autoload": "^6.1.0",
+    "@fastify/cors": "^11.0.0",
+    "@fastify/postgres": "^6.0.2",
+    "fastify": "^5.2.1"
+  }
 }

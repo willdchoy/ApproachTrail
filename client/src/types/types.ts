@@ -5,12 +5,11 @@ export type CategoryName = "Men's Jackets" | "Women's Jackets";
 export type Sex = "Men's" | "Women's";
 
 export type Product = {
-  id: number;
-  title: string;
-  logoText: string;
+  product_id: number;
+  name: string;
+  brand_name: string;
   logoImgSrc: string;
   description: string;
-  sex: Sex;
   productImgSrc: string;
   type: CategoryType;
 };

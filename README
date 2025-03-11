@@ -1,0 +1,10 @@
+install docker
+install git
+install n
+
+setup git account
+
+clone repo
+checkout dev branch
+
+run docker-compose

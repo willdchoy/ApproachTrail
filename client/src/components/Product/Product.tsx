@@ -3,26 +3,23 @@ import SocialIcons from "@/components/SocialIcons/Socialcons";
 import RedirectToAffiliate from "../RedirectToAffiliate/RedirectToAffiliate";
 
 interface ProductProps {
-  id: number;
-  title: string;
-  logoImgSrc: string;
-  logoText: string;
+  product_id: number;
+  name: string;
+  brand_name: string;
   productImgSrc: string;
-  sex: string;
 }
 
 function Product({
-  title,
-  // logoImgSrc,
-  logoText,
-  // sex,
-  productImgSrc,
+  product_id,
+  name,
+  brand_name,
+  productImgSrc = "https://placehold.co/400",
 }: ProductProps) {
   return (
-    <div className="product">
+    <div className="product" data-product-id={product_id}>
       <div className="product-image">
         <a href="#">
-          <img src={productImgSrc} alt={title} />
+          <img src={productImgSrc} alt={name} />
         </a>
       </div>
 
@@ -30,11 +27,11 @@ function Product({
         <div className="product-title">
           <div className="product-logo">
             <a href="#">
-              <span>{logoText}</span>
+              <span>{brand_name}</span>
             </a>
           </div>
           <a href="#">
-            <h5>{title}</h5>
+            <h5>{name}</h5>
           </a>
         </div>
         <div className="product-action">
