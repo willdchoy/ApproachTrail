@@ -7,13 +7,14 @@ CREATE TABLE IF NOT EXISTS site_user (
 CREATE TABLE IF NOT EXISTS product_category (
   product_category_id INT PRIMARY KEY,
   parent_category_id INT references product_category(product_category_id),
-  category_name VARCHAR(100)
+  category_name VARCHAR(100),
+  category_code VARCHAR(100)
 );
 
 CREATE TABLE IF NOT EXISTS product_brand (
   product_brand_id INT PRIMARY KEY,
-  brand_description VARCHAR(300),
-  brand_name VARCHAR(100)
+  brand_name VARCHAR(100),
+  brand_code VARCHAR(100)
 );
 
 CREATE TABLE IF NOT EXISTS product (
@@ -75,13 +76,13 @@ CREATE TABLE IF NOT EXISTS backpack_item (
 -- Seed DB
 
 -- brands
-COPY product_brand(product_brand_id,brand_name,brand_description)
+COPY product_brand(product_brand_id,brand_code,brand_name)
 FROM '/var/data/postgres/seed/seed-brand.csv'
 DELIMITER ','
 CSV HEADER;
 
 -- category
-COPY product_category(product_category_id,category_name)
+COPY product_category(product_category_id,parent_category_id,category_name,category_code)
 FROM '/var/data/postgres/seed/seed-category.csv'
 DELIMITER ','
 CSV HEADER;
