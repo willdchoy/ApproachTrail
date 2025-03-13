@@ -1,2 +1,2 @@
-product_item_id,sku,qty_in_stock,original_price,sale_price,product_id
-1,123,3,37400,32400,3
+product_item_id,sku,qty_in_stock,product_id
+1,123,3,3

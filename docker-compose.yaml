@@ -3,7 +3,6 @@ services:
     extends:
       file: ./db/docker-compose.yaml
       service: db
-    restart: always
     networks:
       - backend
 
@@ -13,7 +12,6 @@ services:
       service: api
     depends_on:
       - db
-    restart: always
     networks:
       - backend
 
@@ -23,7 +21,6 @@ services:
       service: web
     depends_on:
       - api
-    restart: always
     networks:
       - frontend
 
