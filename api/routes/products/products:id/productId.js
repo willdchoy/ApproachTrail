@@ -1,10 +1,11 @@
-import { generateProductById } from "../../../services/product-service.js";
+import { generateProductsById } from "../../../services/product-service.js";
 
 export default async function (fastify) {
   fastify.get("/products/:id", async (req, reply) => {
     try {
-      const productResponseObj = await generateProductById(
+      const productResponseObj = await generateProductsById(
         fastify,
+        req.params.id,
         req.params.id
       );
       reply.send(productResponseObj);
