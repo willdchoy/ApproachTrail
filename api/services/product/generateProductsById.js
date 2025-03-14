@@ -10,7 +10,9 @@ export async function generateProductsById(fastify, begin, end = begin) {
   try {
     const { rows: productItems } = await client.query(
       `
-        SELECT pi.product_item_id, pi.sku, pi.qty_in_stock, pi.attribute, p.name, p.description, pb.brand_code, pb.brand_name, pc.category_name, pc.category_code
+        SELECT 
+          pi.product_item_id, pi.sku, pi.qty_in_stock, pi.attribute, p.name, 
+          p.description, pb.brand_code, pb.brand_name, pc.category_name, pc.category_code
         FROM product_item as pi
         JOIN product as p
         ON p.product_id = pi.product_id
@@ -38,7 +40,15 @@ export async function generateProductsById(fastify, begin, end = begin) {
         colors: [...new Set(productItems.map((item) => item.attribute.color))],
       },
       items: productItems.map(
-        ({ name, description, brand_code, brand_name, ...item }) => item
+        ({
+          name,
+          description,
+          brand_code,
+          brand_name,
+          category_name,
+          category_code,
+          ...item
+        }) => item
       ),
     };
 
