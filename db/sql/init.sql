@@ -4,29 +4,17 @@ CREATE TABLE IF NOT EXISTS site_user (
   password VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS product_size_category (
-  product_size_category_id INT PRIMARY KEY,
-  category_name VARCHAR(100)
-);
-
-CREATE TABLE IF NOT EXISTS product_size_option (
-  product_size_option_id INT PRIMARY KEY,
-  size_option_name VARCHAR(100),
-  sort_option_order INT,
-  product_size_category_id INT references product_size_category(product_size_category_id)
-);
-
 CREATE TABLE IF NOT EXISTS product_category (
   product_category_id INT PRIMARY KEY,
   parent_category_id INT references product_category(product_category_id),
   category_name VARCHAR(100),
-  product_size_category_id INT references product_size_category(product_size_category_id)
+  category_code VARCHAR(100)
 );
 
 CREATE TABLE IF NOT EXISTS product_brand (
   product_brand_id INT PRIMARY KEY,
-  brand_description VARCHAR(300),
-  brand_name VARCHAR(100)
+  brand_name VARCHAR(100),
+  brand_code VARCHAR(100)
 );
 
 CREATE TABLE IF NOT EXISTS product (
@@ -41,30 +29,36 @@ CREATE TABLE IF NOT EXISTS product_item (
   product_item_id INT PRIMARY KEY,
   sku VARCHAR(100),
   qty_in_stock INT,
+  product_id INT references product(product_id)
+);
+
+CREATE TABLE IF NOT EXISTS product_price (
+  product_price_history_id INT PRIMARY KEY,
   original_price INT,
   sale_price INT,
-  product_id INT references product(product_id)
+  created_at DATE,
+  product_item_id INT references product_item(product_item_id)
 );
 
 CREATE TABLE IF NOT EXISTS product_media (
   product_media_id INT PRIMARY KEY,
+  location VARCHAR(250),
   filename VARCHAR(100),
   product_item_id INT references product_item(product_item_id)
 );
 
-CREATE TABLE IF NOT EXISTS product_variation (
-  product_variation_id INT PRIMARY KEY,
-  qyt_in_stock int,
-  product_item_id INT references product_item(product_item_id),
-  size_id INT references product_size_option(product_size_option_id)
+CREATE TABLE IF NOT EXISTS product_attribute (
+  product_attribute_id INT PRIMARY KEY,
+  attribute_code VARCHAR(100),
+  display_name VARCHAR(100),
+  data_type VARCHAR(20),
+  product_item_id INT references product_item(product_item_id)
 );
 
-CREATE TABLE IF NOT EXISTS product_price_history (
-  product_price_history_id INT PRIMARY KEY,
-  original_price INT,
-  sala_price INT,
-  created_at DATE,
-  product_item_id INT references product_item(product_item_id)
+CREATE TABLE IF NOT EXISTS product_attribute_value_varchar (
+  product_item_id INT references product_item(product_item_id),
+  product_attribute_id INT references product_attribute(product_attribute_id),
+  value varchar(200)
 );
 
 CREATE TABLE IF NOT EXISTS backpack (
@@ -82,13 +76,13 @@ CREATE TABLE IF NOT EXISTS backpack_item (
 -- Seed DB
 
 -- brands
-COPY product_brand(product_brand_id,brand_name,brand_description)
+COPY product_brand(product_brand_id,brand_code,brand_name)
 FROM '/var/data/postgres/seed/seed-brand.csv'
 DELIMITER ','
 CSV HEADER;
 
 -- category
-COPY product_category(product_category_id,category_name)
+COPY product_category(product_category_id,parent_category_id,category_name,category_code)
 FROM '/var/data/postgres/seed/seed-category.csv'
 DELIMITER ','
 CSV HEADER;
@@ -100,7 +94,19 @@ DELIMITER ','
 CSV HEADER;
 
 -- product item
-COPY product_item(product_item_id,sku,qty_in_stock,original_price,sale_price,product_id)
+COPY product_item(product_item_id,sku,qty_in_stock,product_id)
 FROM '/var/data/postgres/seed/seed-product-item.csv'
+DELIMITER ','
+CSV HEADER;
+
+-- product attribute
+COPY product_attribute(product_attribute_id,attribute_code,display_name,data_type,product_item_id)
+FROM '/var/data/postgres/seed/seed-product-attribute.csv'
+DELIMITER ','
+CSV HEADER;
+
+-- product attribute value varchar
+COPY product_attribute_value_varchar(product_item_id,product_attribute_id,value)
+FROM '/var/data/postgres/seed/seed-product-attribute-value-varchar.csv'
 DELIMITER ','
 CSV HEADER;

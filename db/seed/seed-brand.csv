@@ -1,4 +1,4 @@
-product_brand_id,brand_name,band_description
-1,Enlightened Equipment,Enlightened Equipment
-2,Patagonia,Patagonia
-3,Zpacks,Zpacks
+product_brand_id,brand_code,band_name
+1,enlightened-quipment,Enlightened Equipment
+2,patagonia,Patagonia
+3,zpacks,Zpacks

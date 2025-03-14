@@ -1,14 +1,15 @@
-export default async function (fastify, opts) {
+import { generateProductById } from "../../../services/product-service.js";
+
+export default async function (fastify) {
   fastify.get("/products/:id", async (req, reply) => {
-    const client = await fastify.pg.connect();
     try {
-      const { rows } = await client.query(
-        `SELECT *
-         FROM product
-         WHERE product_id=$1`,
-        [req.params.id]
+      const productResponseObj = await generateProductById(
+        fastify,
+        req.params.id
       );
-      reply.send(rows);
+      reply.send(productResponseObj);
+    } catch (e) {
+      console.log("Error", e);
     } finally {
       client.release();
     }

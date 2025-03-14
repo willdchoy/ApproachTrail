@@ -1,0 +1,16 @@
+product_item_id,product_attribute_id,value
+1,1,Azure Blue
+1,1,Black
+1,1,Burnt Orange
+1,2,Small
+1,2,Medium
+1,2,Large
+1,2,Extra Large
+1,2,XX-Large
+2,3,Azure Blue
+2,3,Black
+2,4,Small
+2,4,Medium
+2,4,Large
+2,4,Extra Large
+2,4,XX-Large
