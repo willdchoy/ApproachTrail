@@ -1,7 +1,7 @@
 /**
  * @param fastify Fastify
  * @param id number
- * @returns productGroupResponseObj
+ * @returns productResponse
  */
 export async function generateProductGroupById(fastify, id) {
   const client = await fastify.pg.connect();
@@ -18,7 +18,7 @@ export async function generateProductGroupById(fastify, id) {
         JOIN product_brand as pb
         ON p.brand_id = pb.product_brand_id
         JOIN product_category as pc
-        ON p.category_id = pc.product_category_id
+        ON p.product_category_id = pc.product_category_id
         WHERE pi.product_id = $1
       `,
       [id]
@@ -26,17 +26,30 @@ export async function generateProductGroupById(fastify, id) {
 
     const { rows: productPriceHistory } = await client.query(
       `
-        select pph.product_price_history_id, pi.product_item_id, pph.original_price, pph.sale_price, pph.created_at
-        from product_item pi
-        join product_price_history pph
-        on pi.product_item_id = pph.product_item_id
-        where pi.product_id = $1
-        order by pph.product_price_history_id desc
+        SELECT 
+          pph.product_price_history_id, pi.product_item_id, pph.product_seller_id,
+          pph.original_price, pph.sale_price, pph.created_at, ps.seller_name, ps.seller_code, ps.affiliate_id
+        FROM product_item pi
+        JOIN product_price_history pph
+        ON pi.product_item_id = pph.product_item_id
+        JOIN product_seller as ps
+        ON pph.product_seller_id = ps.product_seller_id
+        WHERE pi.product_id = $1
+        ORDER BY pph.product_price_history_id desc
       `,
       [id]
     );
 
-    const productGroupResponseObj = {
+    const { rows: productMedia } = await client.query(
+      `
+        select *
+        from product_media
+        where product_id = $1
+      `,
+      [id]
+    );
+
+    const productResponse = {
       metadata: {
         name: productItems[0].name,
         product_id: productItems[0].product_id,
@@ -46,12 +59,15 @@ export async function generateProductGroupById(fastify, id) {
         category_name: productItems[0].category_name,
         category_code: productItems[0].category_code,
       },
+      media: {
+        images: productMedia.filter((media) => media.type === "image"),
+        videos: productMedia.filter((media) => media.type === "video"),
+      },
       attributes: {
         sizes: [...new Set(productItems.map((item) => item.attribute.size))],
         colors: [...new Set(productItems.map((item) => item.attribute.color))],
       },
       items: productItems.map(
-        // Remove properties found in metadata
         ({
           name,
           description,
@@ -64,15 +80,15 @@ export async function generateProductGroupById(fastify, id) {
         }) => {
           return {
             ...item,
-            price_history: productPriceHistory
-              .filter((price) => price.product_item_id === item.product_item_id)
-              .sort((price) => price.sale_price),
+            price_history: productPriceHistory.filter(
+              (price) => price.product_item_id === item.product_item_id
+            ),
           };
         }
       ),
     };
 
-    return productGroupResponseObj;
+    return productResponse;
   } catch (e) {
     throw new Error(e);
   } finally {
