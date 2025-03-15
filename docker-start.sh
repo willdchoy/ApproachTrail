@@ -1,5 +1,5 @@
 #!/bin/bash
 
-echo 'Starting development docker containers'
+echo 'Starting Docker development containers'
 
 docker compose up --watch

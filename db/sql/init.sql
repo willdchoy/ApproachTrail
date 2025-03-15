@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS product_category (
 
 CREATE TABLE IF NOT EXISTS product_brand (
   product_brand_id INT PRIMARY KEY,
-  brand_name VARCHAR(100),
+  brand_name VARCHAR(300),
   brand_code VARCHAR(100)
 );
 
@@ -29,15 +29,16 @@ CREATE TABLE IF NOT EXISTS product_item (
   product_item_id INT PRIMARY KEY,
   sku VARCHAR(100),
   qty_in_stock INT,
-  product_id INT references product(product_id)
+  product_id INT references product(product_id),
+  attribute jsonb
 );
 
-CREATE TABLE IF NOT EXISTS product_price (
+CREATE TABLE IF NOT EXISTS product_price_history (
   product_price_history_id INT PRIMARY KEY,
-  original_price INT,
-  sale_price INT,
-  created_at DATE,
-  product_item_id INT references product_item(product_item_id)
+  original_price DECIMAL NOT NULL,
+  sale_price DECIMAL,
+  created_at TIMESTAMP NOT NULL,
+  product_item_id INT NOT NULL references product_item(product_item_id)
 );
 
 CREATE TABLE IF NOT EXISTS product_media (
@@ -45,20 +46,6 @@ CREATE TABLE IF NOT EXISTS product_media (
   location VARCHAR(250),
   filename VARCHAR(100),
   product_item_id INT references product_item(product_item_id)
-);
-
-CREATE TABLE IF NOT EXISTS product_attribute (
-  product_attribute_id INT PRIMARY KEY,
-  attribute_code VARCHAR(100),
-  display_name VARCHAR(100),
-  data_type VARCHAR(20),
-  product_item_id INT references product_item(product_item_id)
-);
-
-CREATE TABLE IF NOT EXISTS product_attribute_value_varchar (
-  product_item_id INT references product_item(product_item_id),
-  product_attribute_id INT references product_attribute(product_attribute_id),
-  value varchar(200)
 );
 
 CREATE TABLE IF NOT EXISTS backpack (
@@ -94,19 +81,15 @@ DELIMITER ','
 CSV HEADER;
 
 -- product item
-COPY product_item(product_item_id,sku,qty_in_stock,product_id)
+-- !! Must use ; as the delimeter when importing json
+COPY product_item(product_item_id,sku,qty_in_stock,product_id,attribute)
 FROM '/var/data/postgres/seed/seed-product-item.csv'
+DELIMITER ';'
+CSV HEADER;
+
+-- product price history
+COPY product_price_history(product_price_history_id,original_price,sale_price,created_at,product_item_id)
+FROM '/var/data/postgres/seed/seed-product-price-history.csv'
 DELIMITER ','
 CSV HEADER;
 
--- product attribute
-COPY product_attribute(product_attribute_id,attribute_code,display_name,data_type,product_item_id)
-FROM '/var/data/postgres/seed/seed-product-attribute.csv'
-DELIMITER ','
-CSV HEADER;
-
--- product attribute value varchar
-COPY product_attribute_value_varchar(product_item_id,product_attribute_id,value)
-FROM '/var/data/postgres/seed/seed-product-attribute-value-varchar.csv'
-DELIMITER ','
-CSV HEADER;
