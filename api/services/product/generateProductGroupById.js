@@ -26,12 +26,23 @@ export async function generateProductGroupById(fastify, id) {
 
     const { rows: productPriceHistory } = await client.query(
       `
-        select pph.product_price_history_id, pi.product_item_id, pph.original_price, pph.sale_price, pph.created_at
+        select 
+          pph.product_price_history_id, pi.product_item_id, 
+          pph.original_price, pph.sale_price, pph.created_at
         from product_item pi
         join product_price_history pph
         on pi.product_item_id = pph.product_item_id
         where pi.product_id = $1
         order by pph.product_price_history_id desc
+      `,
+      [id]
+    );
+
+    const { rows: productMedia } = await client.query(
+      `
+        select *
+        from product_media
+        where product_id = $1
       `,
       [id]
     );
@@ -45,13 +56,16 @@ export async function generateProductGroupById(fastify, id) {
         brand_name: productItems[0].brand_name,
         category_name: productItems[0].category_name,
         category_code: productItems[0].category_code,
+        media: {
+          images: productMedia.filter((media) => media.type === "image"),
+          videos: productMedia.filter((media) => media.type === "video"),
+        },
       },
       attributes: {
         sizes: [...new Set(productItems.map((item) => item.attribute.size))],
         colors: [...new Set(productItems.map((item) => item.attribute.color))],
       },
       items: productItems.map(
-        // Remove properties found in metadata
         ({
           name,
           description,
@@ -64,9 +78,9 @@ export async function generateProductGroupById(fastify, id) {
         }) => {
           return {
             ...item,
-            price_history: productPriceHistory
-              .filter((price) => price.product_item_id === item.product_item_id)
-              .sort((price) => price.sale_price),
+            price_history: productPriceHistory.filter(
+              (price) => price.product_item_id === item.product_item_id
+            ),
           };
         }
       ),

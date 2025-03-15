@@ -43,9 +43,10 @@ CREATE TABLE IF NOT EXISTS product_price_history (
 
 CREATE TABLE IF NOT EXISTS product_media (
   product_media_id INT PRIMARY KEY,
-  location VARCHAR(250),
   filename VARCHAR(100),
-  product_item_id INT references product_item(product_item_id)
+  type VARCHAR(10),
+  product_item_id INT references product_item(product_item_id),
+  product_id INT references product(product_id)
 );
 
 CREATE TABLE IF NOT EXISTS backpack (
@@ -93,3 +94,8 @@ FROM '/var/data/postgres/seed/seed-product-price-history.csv'
 DELIMITER ','
 CSV HEADER;
 
+-- product price media
+COPY product_media(product_media_id,filename,type,product_item_id,product_id)
+FROM '/var/data/postgres/seed/seed-product-media.csv'
+DELIMITER ','
+CSV HEADER;
