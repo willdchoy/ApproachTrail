@@ -1,4 +1,4 @@
-import { generateProductGroupById } from "../../../services/product/generateProductGroupById.js";
+import { generateProductGroupById } from "#services/product/generateProductGroupById.js";
 
 export default async function (fastify) {
   fastify.get("/products/:id", async (req, reply) => {
