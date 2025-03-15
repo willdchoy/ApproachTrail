@@ -33,12 +33,12 @@ CREATE TABLE IF NOT EXISTS product_item (
   attribute jsonb
 );
 
-CREATE TABLE IF NOT EXISTS product_price (
+CREATE TABLE IF NOT EXISTS product_price_history (
   product_price_history_id INT PRIMARY KEY,
-  original_price INT,
-  sale_price INT,
-  created_at DATE,
-  product_item_id INT references product_item(product_item_id)
+  original_price DECIMAL NOT NULL,
+  sale_price DECIMAL,
+  created_at TIMESTAMP NOT NULL,
+  product_item_id INT NOT NULL references product_item(product_item_id)
 );
 
 CREATE TABLE IF NOT EXISTS product_media (
@@ -81,7 +81,15 @@ DELIMITER ','
 CSV HEADER;
 
 -- product item
+-- !! Must use ; as the delimeter when importing json
 COPY product_item(product_item_id,sku,qty_in_stock,product_id,attribute)
 FROM '/var/data/postgres/seed/seed-product-item.csv'
 DELIMITER ';'
 CSV HEADER;
+
+-- product price history
+COPY product_price_history(product_price_history_id,original_price,sale_price,created_at,product_item_id)
+FROM '/var/data/postgres/seed/seed-product-price-history.csv'
+DELIMITER ','
+CSV HEADER;
+
