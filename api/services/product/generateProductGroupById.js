@@ -1,6 +1,6 @@
 /**
- * @param fastify Fastify
- * @param id number
+ * @param {Fastify} fastify Fastify instance
+ * @param {number} id product id
  * @returns productResponse
  */
 export async function generateProductGroupById(fastify, id) {
