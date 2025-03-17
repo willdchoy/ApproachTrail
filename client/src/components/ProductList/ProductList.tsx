@@ -4,7 +4,7 @@ import Product from "@/components/Product/Product";
 import { useService } from "@/hooks/useService";
 
 function ProductList() {
-  const { isLoading, error, data } = useService("/products/1");
+  const { isLoading, error, data } = useService("/categories/2");
   const products = data as TProduct[];
 
   console.log(isLoading, error, data);

@@ -1,4 +1,5 @@
 import Fastify from "fastify";
+import { log } from "node:console";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -23,6 +24,7 @@ fastify.setErrorHandler(function (error, request, reply) {
 await fastify.register(import("@fastify/rate-limit"), {
   max: 100,
   timeWindow: "1 minute",
+  allowList: process.env.NODE_ENV === "development" ? undefined : [],
 });
 
 // autoload routes
