@@ -76,13 +76,14 @@ export async function generateProductGroupById(
         },
         items: productItems.map(
           ({
-            name,
-            description,
-            brand_code,
-            brand_name,
-            category_name,
-            category_code,
-            product_id,
+            // TODO Fix eslint issues
+            name, // eslint-disable-line
+            description, // eslint-disable-line
+            brand_code, // eslint-disable-line
+            brand_name, // eslint-disable-line
+            category_name, // eslint-disable-line
+            category_code, // eslint-disable-line
+            product_id, // eslint-disable-line
             ...item
           }) => {
             return {

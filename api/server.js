@@ -1,5 +1,4 @@
 import Fastify from "fastify";
-import { log } from "node:console";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
