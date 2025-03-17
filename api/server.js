@@ -11,11 +11,18 @@ const ALLOWED_METHODS = ["GET"];
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+fastify.setErrorHandler(function (error, request, reply) {
+  if (error.statusCode === 429) {
+    reply.code(429);
+    error.message = `You hit the rate limit! ${request.url}`;
+  }
+  reply.send(error);
+});
+
 // rate limiter
 await fastify.register(import("@fastify/rate-limit"), {
-  max: process.env.RATE_LIMITER_MAX,
-  timeWindow: process.env.RATE_LIMITER_TIME_WINDOW,
-  allowList: process.env.RATE_LIMITER_ALLOW_LIST,
+  max: 100,
+  timeWindow: "1 minute",
 });
 
 // autoload routes

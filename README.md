@@ -28,8 +28,10 @@ Change to the dev branch: `git checkout dev`
 
 Install npm packages: `bash setup.sh`
 
-Start ApproachTrail infra: `bash docker-start.sh`
+Start ApproachTrail infra: `./docker-start.sh`
 
-Stop ApproachTrail infra: `bash docker-stop.sh`
+Stop ApproachTrail infra: `./docker-stop.sh`
+
+Reset ApproachTrail infra: `./docker-reset.sh`
 
 View web app: `http://localhost:5173`
