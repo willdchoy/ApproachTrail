@@ -31,13 +31,13 @@ export async function generateProductGroupById(
     const { rows: productPriceHistory } = await client.query(
       `
         SELECT 
-          pph.product_price_history_id, pi.product_item_id, pph.product_seller_id,
-          pph.original_price, pph.sale_price, pph.created_at, ps.seller_name, ps.seller_code, ps.affiliate_id
+          pph.product_price_history_id, pi.product_item_id, pph.product_vendor_id,
+          pph.original_price, pph.sale_price, pph.created_at, ps.vendor_name, ps.vendor_code, ps.affiliate_id
         FROM product_item pi
         JOIN product_price_history pph
         ON pi.product_item_id = pph.product_item_id
-        JOIN product_seller ps
-        ON pph.product_seller_id = ps.product_seller_id
+        JOIN product_vendor ps
+        ON pph.product_vendor_id = ps.product_vendor_id
         WHERE pi.product_id = $1
         ORDER BY pph.product_price_history_id desc
       `,
