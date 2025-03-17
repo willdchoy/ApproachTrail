@@ -1,45 +1,67 @@
 const playwright = require("playwright");
 
+/**
+ * 
+ * productResponse = {
+      product_id: {
+        metadata: { name, product_id, description, brand_code, brand_name, category_name, category_code }
+        media: { images: [], videos: [] }
+        attributes: { sizes: [], colors: [] ] }
+        item: { ...item, price_history }
+      }
+    }
+ * 
+ */
+
+const config = {
+  productSelector: ".product-single",
+  productTitleSelector: "div.product__content > h2",
+  url: "https://zpacks.com/products/zpacks-trail-cool-sun-hoody",
+  globalDataProp: "meta", // TODO why do we get metadata even though the property is wrong?
+};
+
+const opts = {
+  logger: {
+    isEnabled: () => true,
+    log: (name, severity, message) =>
+      console.log(`${name} ${severity} ${message}`),
+  },
+};
+
 (async () => {
-  const url = "https://zpacks.com/products/trail-cool-hiking-shorts";
-  const productClass = ".product-single";
   let browser;
 
   try {
-    for (const browserType of ["chromium"]) {
-      browser = await playwright[browserType].launch({
-        logger: {
-          isEnabled: (name, severity) => true,
-          log: (name, severity, message, args) =>
-            console.log(`${name} ${severity} ${message}`),
-        },
-      });
-      const context = await browser.newContext();
-      const page = await context.newPage();
+    browser = await playwright["chromium"].launch(opts);
+    const context = await browser.newContext();
+    const page = await context.newPage();
 
-      await page.goto(url);
-      await page.waitForTimeout(1000);
+    await page.goto(config.url);
+    await page.waitForTimeout(1000);
 
-      const meta = await page.evaluate(() => window.meta);
-      console.log(
-        meta.product.variants.forEach((variant) => console.log(variant))
-      );
+    const meta = await page.evaluate((config) => {
+      window[config.globalDataProp];
+    }, config);
 
-      const products = await page.$$eval(productClass, (all_products) => {
+    console.log("meta...........", meta);
+
+    const products = await page.$$eval(
+      config.productSelector,
+      (all_products, config) => {
         const data = [];
-        all_products.forEach((product) => {
-          const titleEl = product.querySelector("div.product__content > h2");
+        for (let product of all_products) {
+          const titleEl = product.querySelector(config.productTitleSelector);
           const title = titleEl ? titleEl.innerText : null;
-          const priceEl = product.querySelector("span.money");
-          const price = priceEl ? priceEl.innerText : null;
-          data.push({ title, price });
-        });
+          data.push({ title, variants: meta.product.variants });
+        }
         return data;
-      });
-      console.log(products);
+      },
+      config
+    );
 
-      await browser.close();
-    }
+    console.log(products);
+
+    await browser.close();
   } catch (e) {
     console.log(e);
     await browser.close();
