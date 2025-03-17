@@ -6,13 +6,12 @@ const __dirname = import.meta.dirname;
 const config = {
   vendorCode: "zpacks",
   commercePlatform: "shopify",
-  urlPath: "../seed-urls/",
-  urlFilename: "zpacks.csv",
-  url: path.join(__dirname, "../seed-urls/", "zpacks.csv"),
+  inputFilePath: path.join(__dirname, "../seed-urls/", "zpacks.csv"),
+  outputFilePath: path.join(__dirname, "../output/", "zpacks.csv"),
   globalDataProp: "Shopify",
 };
 
-const opts = {
+const playwrightOpts = {
   logger: {
     isEnabled: () => true,
     log: (name, severity, message) =>
@@ -20,8 +19,10 @@ const opts = {
   },
 };
 
+deleteExistingPriceUpdateFile(config.outputFilePath);
+
 const productUrls = fs
-  .readFileSync(path.join(__dirname, config.urlPath, config.urlFilename))
+  .readFileSync(config.inputFilePath)
   .toString()
   .split("\n")
   .map((e) => e.trim());
@@ -30,10 +31,23 @@ const productUrls = fs
   switch (config.commercePlatform) {
     case "shopify":
       for await (const productUrl of productUrls) {
-        await handleShopify(config, opts, productUrl);
+        await handleShopify(config, playwrightOpts, productUrl);
       }
       break;
     default:
       console.log("no commerce platform was provided");
   }
 })();
+
+function deleteExistingPriceUpdateFile(outputFilePath) {
+  if (fs.existsSync(outputFilePath)) {
+    fs.unlink(outputFilePath, (e) => {
+      if (e) {
+        throw new Error(
+          `deleteExistingPriceUpdateFile : ${outputFilePath} not deleted.`,
+          e
+        );
+      }
+    });
+  }
+}

@@ -1,15 +1,13 @@
 import playwright from "playwright";
 import fs from "node:fs";
-import path from "node:path";
-const __dirname = import.meta.dirname;
 
-export async function handleShopify(config, opts, productUrl) {
+export async function handleShopify(config, playwrightOpts, productUrl) {
   let browser = undefined;
 
   console.log(`visiting ${productUrl}...................................`);
 
   try {
-    browser = await playwright["chromium"].launch(opts);
+    browser = await playwright["chromium"].launch(playwrightOpts);
     const context = await browser.newContext();
     const page = await context.newPage();
 
@@ -27,18 +25,23 @@ export async function handleShopify(config, opts, productUrl) {
       };
     });
 
-    const filename = `${config.vendorCode}.csv`;
-    const filePath = path.join(__dirname, "../output", filename);
-    const writeStream = fs.createWriteStream(filePath, { flags: "a" });
+    writePriceUpdatesToFile(config, priceUpdates);
 
-    for (let priceUpdate of priceUpdates) {
-      writeStream.write(`${priceUpdate.id},${priceUpdate.price}\n`);
-    }
-
-    writeStream.end();
     await browser.close();
   } catch (e) {
-    console.log(`Error crawling ${productUrl}`, e);
+    console.log(`Error handleShopify { productUrl: ${productUrl} }`, e);
     await browser.close();
   }
+}
+
+function writePriceUpdatesToFile(config, priceUpdates) {
+  const writeStream = fs.createWriteStream(config.outputFilePath, {
+    flags: "a",
+  });
+
+  for (let priceUpdate of priceUpdates) {
+    writeStream.write(`${priceUpdate.id},${priceUpdate.price}\n`);
+  }
+
+  writeStream.end();
 }
