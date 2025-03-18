@@ -1,6 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
+  box-sizing: border-box;
   font-family: "Roboto", serif;
   font-optical-sizing: auto;
   font-weight: 300;
@@ -35,7 +42,6 @@
 
 body {
   margin: 0 auto;
-  box-sizing: border-box;
   max-width: var(--breakpoint-desktop);
 }
 

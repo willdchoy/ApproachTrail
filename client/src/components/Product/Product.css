@@ -2,8 +2,6 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  width: 100%;
-  max-width: 100%;
   background-color: #ffffff;
   border: 1px solid lightgrey;
   border-radius: 3px;
@@ -13,8 +11,6 @@
   }
 
   .product-image {
-    display: flex;
-    justify-content: center;
     border-bottom: 1px solid rgb(239, 237, 237);
 
     @media (min-width: 500px) {
@@ -28,35 +24,90 @@
     }
   }
 
-  .product-details {
+  .comments {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 5px;
-    height: 105px;
+    justify-content: flex-end;
+    background-color: inherit;
+    width: 100%;
+    height: 100%;
+    /* min-height: 200px; */
+    color: #faebd7;
+    background-color: #2d2e36;
 
-    .product-logo {
-      margin: 0;
-      font-size: 14px;
-    }
+    .comment-thread {
+      color: #bdbdc0;
+      .comment {
+        font-size: 0.9rem;
+        padding: 10px;
 
-    .product-title {
-      color: rgb(42, 42, 42);
-      font-size: 14px;
-      margin-bottom: var(--margin-bottom);
+        .comment-header {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 5px;
 
-      h5 {
-        margin: 0;
-        color: #000000;
-        font-size: 16px;
-        font-weight: normal;
+          span.comment-author {
+            font-weight: bold;
+            margin-right: 20px;
+          }
+        }
+
+        .comment-body {
+          margin-bottom: 5px;
+        }
+
+        .comment-footer {
+          display: flex;
+          align-items: flex-end;
+          span.comment-reactions {
+            margin-right: 20px;
+          }
+        }
+
+        .comment-count {
+          font-size: 0.8rem;
+          margin-top: 10px;
+        }
       }
     }
 
-    .product-action {
-      padding: 5px 0;
-      display: flex;
-      justify-content: space-between;
+    .comment-bar {
+      position: relative;
+      padding: 0 5px;
+
+      svg {
+        position: absolute;
+        cursor: pointer;
+        right: 3%;
+        top: 13px;
+
+        @media (min-width: 768px) {
+          right: 5%;
+        }
+      }
+    }
+
+    .input {
+      width: 100%;
+      /* height: 50px; */
+      padding: 12px;
+      border-radius: 12px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      border: 1.5px solid white;
+      outline: none;
+      transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+      box-shadow: 0px 0px 20px -18px;
+    }
+
+    .input:hover {
+      box-shadow: 0px 0px 20px -17px;
+    }
+
+    .input:active {
+    }
+
+    .input:focus {
     }
   }
 }

@@ -54,47 +54,43 @@ export async function generateProductGroupById(
     );
 
     const productResponse = {
-      [productItems[0].product_id]: {
-        metadata: {
-          name: productItems[0].name,
-          product_id: productItems[0].product_id,
-          description: productItems[0].description,
-          brand_code: productItems[0].brand_code,
-          brand_name: productItems[0].brand_name,
-          category_name: productItems[0].category_name,
-          category_code: productItems[0].category_code,
-        },
-        media: {
-          images: productMedia.filter((media) => media.type === "image"),
-          videos: productMedia.filter((media) => media.type === "video"),
-        },
-        attributes: {
-          sizes: [...new Set(productItems.map((item) => item.attribute.size))],
-          colors: [
-            ...new Set(productItems.map((item) => item.attribute.color)),
-          ],
-        },
-        items: productItems.map(
-          ({
-            // TODO Fix eslint issues
-            name, // eslint-disable-line
-            description, // eslint-disable-line
-            brand_code, // eslint-disable-line
-            brand_name, // eslint-disable-line
-            category_name, // eslint-disable-line
-            category_code, // eslint-disable-line
-            product_id, // eslint-disable-line
-            ...item
-          }) => {
-            return {
-              ...item,
-              price_history: productPriceHistory.filter(
-                (price) => price.product_item_id === item.product_item_id
-              ),
-            };
-          }
-        ),
+      metadata: {
+        name: productItems[0].name,
+        product_id: productItems[0].product_id,
+        description: productItems[0].description,
+        brand_code: productItems[0].brand_code,
+        brand_name: productItems[0].brand_name,
+        category_name: productItems[0].category_name,
+        category_code: productItems[0].category_code,
       },
+      media: {
+        images: productMedia.filter((media) => media.type === "image"),
+        videos: productMedia.filter((media) => media.type === "video"),
+      },
+      attributes: {
+        sizes: [...new Set(productItems.map((item) => item.attribute.size))],
+        colors: [...new Set(productItems.map((item) => item.attribute.color))],
+      },
+      items: productItems.map(
+        ({
+          // TODO Fix eslint issues
+          name, // eslint-disable-line
+          description, // eslint-disable-line
+          brand_code, // eslint-disable-line
+          brand_name, // eslint-disable-line
+          category_name, // eslint-disable-line
+          category_code, // eslint-disable-line
+          product_id, // eslint-disable-line
+          ...item
+        }) => {
+          return {
+            ...item,
+            price_history: productPriceHistory.filter(
+              (price) => price.product_item_id === item.product_item_id
+            ),
+          };
+        }
+      ),
     };
 
     return productResponse;

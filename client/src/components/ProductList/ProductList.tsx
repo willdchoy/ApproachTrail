@@ -16,6 +16,21 @@ function ProductList() {
             return <Product key={product.product_id} {...product} />;
           })
         : "No products available!"}
+      {products
+        ? products.map((product: TProduct) => {
+            return <Product key={product.product_id} {...product} />;
+          })
+        : "No products available!"}
+      {products
+        ? products.map((product: TProduct) => {
+            return <Product key={product.product_id} {...product} />;
+          })
+        : "No products available!"}
+      {products
+        ? products.map((product: TProduct) => {
+            return <Product key={product.product_id} {...product} />;
+          })
+        : "No products available!"}
     </div>
   );
 }
