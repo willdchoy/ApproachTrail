@@ -1,5 +1,4 @@
-import path from "node:path";
-const __dirname = import.meta.dirname;
+import { createCSVFilePath } from "../utils/utils.js";
 
 const commercePlatforms = {
   shopify: {
@@ -29,12 +28,3 @@ for (let vendorCode in vendorCodes) {
 }
 
 export default vendors;
-
-/**
- * @param {string} dir
- * @param {string} filename
- * @returns
- */
-function createCSVFilePath(dir, filename) {
-  return path.join(__dirname, dir, `${filename}.csv`);
-}

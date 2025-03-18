@@ -1,6 +1,9 @@
-import fs from "node:fs";
 import { handleShopify } from "./handleShopify.js";
-import vendors from "../configs/vendor-confg.js";
+import vendors from "../configs/vendorConfig.js";
+import {
+  deleteExistingPriceUpdateFile,
+  createProductUrls,
+} from "../utils/utils.js";
 
 const config = vendors.zpacks;
 
@@ -24,32 +27,3 @@ const productUrls = createProductUrls(config.inputFilePath);
       console.log("no commerce platform was provided");
   }
 })();
-
-/**
- * @param {string} outputFilePath
- */
-function deleteExistingPriceUpdateFile(outputFilePath) {
-  if (fs.existsSync(outputFilePath)) {
-    fs.unlink(outputFilePath, (e) => {
-      if (e) {
-        throw new Error(
-          `deleteExistingPriceUpdateFile : ${outputFilePath} not deleted.`,
-          e
-        );
-      }
-    });
-  }
-}
-
-/**
- * @param {string} inputFilePath
- * @returns {string} productUrls
- */
-function createProductUrls(inputFilePath) {
-  console.log(inputFilePath);
-  return fs
-    .readFileSync(inputFilePath)
-    .toString()
-    .split("\n")
-    .map((e) => e.trim());
-}
