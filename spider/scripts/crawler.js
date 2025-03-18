@@ -1,15 +1,8 @@
 import fs from "node:fs";
-import path from "node:path";
 import { handleShopify } from "./handleShopify.js";
-const __dirname = import.meta.dirname;
+import vendors from "../configs/vendor-confg.js";
 
-const config = {
-  vendorCode: "zpacks",
-  commercePlatform: "shopify",
-  inputFilePath: path.join(__dirname, "../seed-urls/", "zpacks.csv"),
-  outputFilePath: path.join(__dirname, "../output/", "zpacks.csv"),
-  globalDataProp: "Shopify",
-};
+const config = vendors.zpacks;
 
 const playwrightOpts = {
   logger: {
@@ -20,25 +13,21 @@ const playwrightOpts = {
 };
 
 deleteExistingPriceUpdateFile(config.outputFilePath);
+const productUrls = createProductUrls(config.inputFilePath);
 
-const productUrls = fs
-  .readFileSync(config.inputFilePath)
-  .toString()
-  .split("\n")
-  .map((e) => e.trim());
-
-(async () => {
+(() => {
   switch (config.commercePlatform) {
     case "shopify":
-      for await (const productUrl of productUrls) {
-        await handleShopify(config, playwrightOpts, productUrl);
-      }
+      handleShopify(config, playwrightOpts, productUrls);
       break;
     default:
       console.log("no commerce platform was provided");
   }
 })();
 
+/**
+ * @param {string} outputFilePath
+ */
 function deleteExistingPriceUpdateFile(outputFilePath) {
   if (fs.existsSync(outputFilePath)) {
     fs.unlink(outputFilePath, (e) => {
@@ -50,4 +39,17 @@ function deleteExistingPriceUpdateFile(outputFilePath) {
       }
     });
   }
+}
+
+/**
+ * @param {string} inputFilePath
+ * @returns {string} productUrls
+ */
+function createProductUrls(inputFilePath) {
+  console.log(inputFilePath);
+  return fs
+    .readFileSync(inputFilePath)
+    .toString()
+    .split("\n")
+    .map((e) => e.trim());
 }
