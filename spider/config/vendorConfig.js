@@ -7,7 +7,7 @@ const commercePlatforms = {
   },
 };
 
-const vendorCodes = ["zpacks"];
+const vendorCodes = ["zpacks", "enlightened-equipment"];
 let vendors = {};
 
 for (let vendorCode in vendorCodes) {

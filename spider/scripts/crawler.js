@@ -1,11 +1,9 @@
 import { handleShopify } from "./handleShopify.js";
-import vendors from "../configs/vendorConfig.js";
+import vendors from "../config/vendorConfig.js";
 import {
   deleteExistingPriceUpdateFile,
   createProductUrls,
 } from "../utils/utils.js";
-
-const config = vendors.zpacks;
 
 const playwrightOpts = {
   logger: {
@@ -15,15 +13,21 @@ const playwrightOpts = {
   },
 };
 
-deleteExistingPriceUpdateFile(config.outputFilePath);
-const productUrls = createProductUrls(config.inputFilePath);
+for (let vendor in vendors) {
+  crawl(vendors, vendor);
+}
 
-(() => {
-  switch (config.commercePlatform) {
-    case "shopify":
-      handleShopify(config, playwrightOpts, productUrls);
-      break;
-    default:
-      console.log("no commerce platform was provided");
-  }
-})();
+async function crawl(vendors, vendor) {
+  deleteExistingPriceUpdateFile(vendors[vendor].outputFilePath);
+  const productUrls = createProductUrls(vendors[vendor].inputFilePath);
+
+  (async () => {
+    switch (vendors[vendor].commercePlatform) {
+      case "shopify":
+        await handleShopify(vendors[vendor], playwrightOpts, productUrls);
+        break;
+      default:
+        console.log("no commerce platform was provided");
+    }
+  })();
+}

@@ -1,11 +1,13 @@
 import playwright from "playwright";
 import fs from "node:fs";
 
-export async function handleShopify(config, playwrightOpts, productUrls) {
+export async function handleShopify(vendor, playwrightOpts, productUrls) {
   let browser = undefined;
 
   for await (const productUrl of productUrls) {
-    console.log(`visiting ${productUrl}...................................`);
+    console.log(
+      `visiting (${vendor.commercePlatform}) ${productUrl}...................................`
+    );
 
     try {
       browser = await playwright["chromium"].launch(playwrightOpts);
@@ -15,9 +17,9 @@ export async function handleShopify(config, playwrightOpts, productUrls) {
       await page.goto(productUrl);
       await page.waitForTimeout(1000);
 
-      const { product } = await page.evaluate((config) => {
-        return window[config.globalDataProp];
-      }, config);
+      const { product } = await page.evaluate((vendor) => {
+        return window[vendor.globalDataProp];
+      }, vendor);
 
       const priceUpdates = product.variants.map((variant) => {
         return {
@@ -26,7 +28,7 @@ export async function handleShopify(config, playwrightOpts, productUrls) {
         };
       });
 
-      writePriceUpdatesToFile(config, priceUpdates);
+      writePriceUpdatesToFile(vendor, priceUpdates);
 
       await browser.close();
     } catch (e) {
@@ -37,11 +39,11 @@ export async function handleShopify(config, playwrightOpts, productUrls) {
 
   /**
    *
-   * @param {object} config
+   * @param {object} vendor
    * @param {array} priceUpdates
    */
-  function writePriceUpdatesToFile(config, priceUpdates) {
-    const writeStream = fs.createWriteStream(config.outputFilePath, {
+  function writePriceUpdatesToFile(vendor, priceUpdates) {
+    const writeStream = fs.createWriteStream(vendor.outputFilePath, {
       flags: "a",
     });
 
