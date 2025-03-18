@@ -3,7 +3,7 @@ import vendors from "../config/vendorConfig.js";
 import {
   deleteExistingPriceUpdateFile,
   createProductUrls,
-} from "../utils/utils.js";
+} from "#utils/utils.js";
 
 const playwrightOpts = {
   logger: {

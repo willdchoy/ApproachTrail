@@ -14,5 +14,8 @@
   "packageManager": "pnpm@10.6.2",
   "dependencies": {
     "playwright": "^1.51.0"
+  },
+  "imports": {
+    "#utils/*.js": "./utils/*.js"
   }
 }

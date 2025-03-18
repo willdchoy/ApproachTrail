@@ -1,5 +1,5 @@
 import playwright from "playwright";
-import fs from "node:fs";
+import { writePriceUpdatesToFile } from "#utils/utils.js";
 
 export async function handleShopify(vendor, playwrightOpts, productUrls) {
   let browser = undefined;
@@ -35,22 +35,5 @@ export async function handleShopify(vendor, playwrightOpts, productUrls) {
       console.log(`Error handleShopify { productUrl: ${productUrl} }`, e);
       await browser.close();
     }
-  }
-
-  /**
-   *
-   * @param {object} vendor
-   * @param {array} priceUpdates
-   */
-  function writePriceUpdatesToFile(vendor, priceUpdates) {
-    const writeStream = fs.createWriteStream(vendor.outputFilePath, {
-      flags: "a",
-    });
-
-    for (let priceUpdate of priceUpdates) {
-      writeStream.write(`${priceUpdate.id},${priceUpdate.price}\n`);
-    }
-
-    writeStream.end();
   }
 }

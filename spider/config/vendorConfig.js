@@ -1,4 +1,4 @@
-import { createCSVFilePath } from "../utils/utils.js";
+import { createCSVFilePath } from "#utils/utils.js";
 
 const commercePlatforms = {
   shopify: {
@@ -7,7 +7,7 @@ const commercePlatforms = {
   },
 };
 
-const vendorCodes = ["zpacks", "enlightened-equipment"];
+const vendorCodes = ["zpacks"];
 let vendors = {};
 
 for (let vendorCode in vendorCodes) {

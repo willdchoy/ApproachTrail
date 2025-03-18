@@ -38,3 +38,20 @@ export function createProductUrls(inputFilePath) {
 export function createCSVFilePath(dir, filename) {
   return path.join(__dirname, dir, `${filename}.csv`);
 }
+
+/**
+ *
+ * @param {object} vendor
+ * @param {array} priceUpdates
+ */
+export function writePriceUpdatesToFile(vendor, priceUpdates) {
+  const writeStream = fs.createWriteStream(vendor.outputFilePath, {
+    flags: "a",
+  });
+
+  for (let priceUpdate of priceUpdates) {
+    writeStream.write(`${priceUpdate.id},${priceUpdate.price}\n`);
+  }
+
+  writeStream.end();
+}
