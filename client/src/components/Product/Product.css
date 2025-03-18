@@ -11,6 +11,7 @@
   }
 
   .product-image {
+    position: relative;
     border-bottom: 1px solid rgb(239, 237, 237);
 
     @media (min-width: 500px) {
@@ -21,6 +22,35 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
+    }
+
+    .product-pricing {
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: black;
+      height: 25px;
+      width: 100px;
+      padding: 3px;
+
+      .product-from {
+        width: 100%;
+        text-align: right;
+        font-size: 0.8rem;
+      }
+
+      .product-price-dollars {
+        width: 100%;
+        text-align: right;
+        font-size: 2rem;
+        font-weight: bold;
+
+        &::after {
+          font-size: 0.7rem;
+          content: "." attr(data-cents) "";
+          vertical-align: super;
+        }
+      }
     }
   }
 
@@ -89,7 +119,6 @@
 
     .input {
       width: 100%;
-      /* height: 50px; */
       padding: 12px;
       border-radius: 12px;
       border-bottom-right-radius: 0;

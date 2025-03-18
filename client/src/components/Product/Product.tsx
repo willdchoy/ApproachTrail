@@ -20,9 +20,16 @@ function Product({
   return (
     <div className="product" data-product-id={product_id}>
       <div className="product-image">
-        <a href="#">
-          <img src={productImgSrc} alt={name} />
-        </a>
+        <img src={productImgSrc} alt={name} />
+
+        <div className="product-pricing">
+          <div className="product-from">from</div>
+          <div>
+            <span className="product-price-dollars" data-cents="00">
+              $289
+            </span>
+          </div>
+        </div>
       </div>
 
       <div className="comments">
