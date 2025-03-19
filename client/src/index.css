@@ -4,6 +4,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  -webkit-text-size-adjust: none;
 }
 
 :root {
@@ -13,11 +14,11 @@
   font-weight: 300;
   font-style: normal;
 
-  --font-size-xs: 10px;
-  --font-size-xd: 12px;
-  --font-size-lg: 20px;
-  --font-size-xl: 10px;
-
+  --font-size-s: 0.8rem;
+  --font-size-m: 0.9rem;
+  --font-size-l: 1rem;
+  --font-size-xl: 1.1rem;
+  --font-color: #212427;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
