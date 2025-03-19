@@ -23,6 +23,7 @@ fastify.setErrorHandler(function (error, request, reply) {
 await fastify.register(import("@fastify/rate-limit"), {
   max: 100,
   timeWindow: "1 minute",
+  allowList: process.env.NODE_ENV === "development" ? undefined : [],
 });
 
 // autoload routes
@@ -36,7 +37,6 @@ await fastify.register(import("@fastify/autoload"), {
 await fastify.register(import("@fastify/cors"), {
   origin: (origin, cb) => {
     const hostname = origin ? new URL(origin).hostname : null;
-
     if (ALLOWED_ORIGINS.includes(hostname)) {
       cb(null, true);
       return;

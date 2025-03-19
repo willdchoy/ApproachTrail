@@ -3,8 +3,6 @@ services:
     extends:
       file: ./db/docker-compose.yaml
       service: db
-    networks:
-      - backend
 
   api:
     extends:
@@ -12,17 +10,13 @@ services:
       service: api
     depends_on:
       - db
-    networks:
-      - backend
 
-  web:
-    extends:
-      file: ./client/docker-compose.yaml
-      service: web
-    depends_on:
-      - api
-    networks:
-      - frontend
+  # web:
+  #   extends:
+  #     file: ./client/docker-compose.yaml
+  #     service: web
+  #   depends_on:
+  #     - api
 
 networks:
   backend:

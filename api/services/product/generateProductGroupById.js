@@ -3,8 +3,12 @@
  * @param {number} id product id
  * @returns productResponse
  */
-export async function generateProductGroupById(fastify, id) {
-  const client = await fastify.pg.connect();
+export async function generateProductGroupById(
+  fastify,
+  id,
+  existingClientConnection
+) {
+  const client = existingClientConnection || (await fastify.pg.connect());
 
   try {
     const { rows: productItems } = await client.query(
@@ -12,12 +16,12 @@ export async function generateProductGroupById(fastify, id) {
         SELECT 
           pi.product_item_id, pi.sku, pi.qty_in_stock, pi.attribute, p.product_id, p.name, 
           p.description, pb.brand_code, pb.brand_name, pc.category_name, pc.category_code
-        FROM product_item as pi
-        JOIN product as p
+        FROM product_item pi
+        JOIN product p
         ON p.product_id = pi.product_id
-        JOIN product_brand as pb
+        JOIN product_brand pb
         ON p.brand_id = pb.product_brand_id
-        JOIN product_category as pc
+        JOIN product_category pc
         ON p.product_category_id = pc.product_category_id
         WHERE pi.product_id = $1
       `,
@@ -27,13 +31,13 @@ export async function generateProductGroupById(fastify, id) {
     const { rows: productPriceHistory } = await client.query(
       `
         SELECT 
-          pph.product_price_history_id, pi.product_item_id, pph.product_seller_id,
-          pph.original_price, pph.sale_price, pph.created_at, ps.seller_name, ps.seller_code, ps.affiliate_id
+          pph.product_price_history_id, pi.product_item_id, pph.product_vendor_id,
+          pph.original_price, pph.sale_price, pph.created_at, ps.vendor_name, ps.vendor_code, ps.affiliate_id
         FROM product_item pi
         JOIN product_price_history pph
         ON pi.product_item_id = pph.product_item_id
-        JOIN product_seller as ps
-        ON pph.product_seller_id = ps.product_seller_id
+        JOIN product_vendor ps
+        ON pph.product_vendor_id = ps.product_vendor_id
         WHERE pi.product_id = $1
         ORDER BY pph.product_price_history_id desc
       `,
@@ -69,13 +73,14 @@ export async function generateProductGroupById(fastify, id) {
       },
       items: productItems.map(
         ({
-          name,
-          description,
-          brand_code,
-          brand_name,
-          category_name,
-          category_code,
-          product_id,
+          // TODO Fix eslint issues
+          name, // eslint-disable-line
+          description, // eslint-disable-line
+          brand_code, // eslint-disable-line
+          brand_name, // eslint-disable-line
+          category_name, // eslint-disable-line
+          category_code, // eslint-disable-line
+          product_id, // eslint-disable-line
           ...item
         }) => {
           return {

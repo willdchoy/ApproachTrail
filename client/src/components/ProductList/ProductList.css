@@ -5,7 +5,7 @@
 
   .product {
     display: flex;
-    margin-bottom: 2px;
+    margin-bottom: 10px;
 
     @media (min-width: 500px) {
       flex: 1 0 40%;
@@ -22,12 +22,5 @@
       flex: 1 0 22%;
       max-width: 24.9%;
     }
-  }
-
-  .product-placeholder {
-    color: cadetblue;
-    height: 500px;
-    width: 100%;
-    background-color: antiquewhite;
   }
 }

@@ -14,3 +14,5 @@ services:
       POSTGRES_DB: approach_trail
     ports:
       - "5432:5432"
+    networks:
+      - backend

@@ -10,8 +10,6 @@ export default async function (fastify) {
       reply.send(productResponseObj);
     } catch (e) {
       console.log("Error", e);
-    } finally {
-      client.release();
     }
   });
 }

@@ -21,10 +21,10 @@ CREATE TABLE IF NOT EXISTS affiliate (
   affiliate_id INT PRIMARY KEY
 );
 
-CREATE TABLE IF NOT EXISTS product_seller (
-  product_seller_id INT PRIMARY KEY,
-  seller_code VARCHAR(50) NOT NULL,
-  seller_name VARCHAR(50) NOT NULL,
+CREATE TABLE IF NOT EXISTS product_vendor(
+  product_vendor_id INT PRIMARY KEY,
+  vendor_code VARCHAR(50) NOT NULL,
+  vendor_name VARCHAR(50) NOT NULL,
   affiliate_id INT references affiliate(affiliate_id)
 );
 
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS product_price_history (
   original_price DECIMAL NOT NULL,
   sale_price DECIMAL,
   created_at TIMESTAMP NOT NULL,
-  product_seller_id INT NOT NULL references product_seller(product_seller_id),
+  product_vendor_id INT NOT NULL references product_vendor(product_vendor_id),
   product_item_id INT NOT NULL references product_item(product_item_id)
 );
 
@@ -86,9 +86,9 @@ FROM '/var/data/postgres/seed/seed-category.csv'
 DELIMITER ','
 CSV HEADER;
 
--- product seller
-COPY product_seller(product_seller_id,seller_code,seller_name)
-FROM '/var/data/postgres/seed/seed-product-seller.csv'
+-- product vendor
+COPY product_vendor(product_vendor_id,vendor_code,vendor_name)
+FROM '/var/data/postgres/seed/seed-product-vendor.csv'
 DELIMITER ','
 CSV HEADER;
 
@@ -106,7 +106,7 @@ DELIMITER ';'
 CSV HEADER;
 
 -- product price history
-COPY product_price_history(product_price_history_id,original_price,sale_price,created_at,product_item_id, product_seller_id)
+COPY product_price_history(product_price_history_id,original_price,sale_price,created_at,product_item_id, product_vendor_id)
 FROM '/var/data/postgres/seed/seed-product-price-history.csv'
 DELIMITER ','
 CSV HEADER;

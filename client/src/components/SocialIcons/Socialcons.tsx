@@ -1,22 +1,18 @@
+import { MdIosShare, MdModeComment } from "react-icons/md";
+import { IoMdHeart } from "react-icons/io";
 import "./SocialIcons.css";
 
 function SocialIcons() {
   return (
     <ul className="social-icons">
       <li>
-        <i className="fa-solid fa-heart"></i>
+        <MdIosShare />
       </li>
       <li>
-        <i className="fa-solid fa-share"></i>
+        <MdModeComment />
       </li>
       <li>
-        <i className="fa-brands fa-tiktok"></i>
-      </li>
-      <li>
-        <i className="fa-brands fa-facebook-f"></i>
-      </li>
-      <li>
-        <i className="fa-brands fa-square-reddit"></i>
+        <IoMdHeart />
       </li>
     </ul>
   );
