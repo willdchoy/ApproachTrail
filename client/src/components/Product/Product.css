@@ -4,8 +4,12 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--color-background);
-  border: 1px solid lightgrey;
   border-radius: 3px;
+  border-bottom: 1px solid lightgrey;
+
+  @media (min-width: 500px) {
+    border: 1px solid lightgrey;
+  }
 
   @media (min-width: 768px) {
     flex: 0 0 24%;
@@ -128,12 +132,12 @@
 
             .comment-timestamp {
               font-size: var(--font-size-s);
-              color: var(--font-color);
+              color: var(--font-color-muted);
             }
           }
 
           .comment-body p {
-            margin: 2px 0 0 0;
+            margin: 2px 0 5px 0;
             line-height: 1.6;
             font-size: var(--font-size-m);
           }
@@ -145,7 +149,7 @@
             .comment-reactions {
               display: flex;
               align-items: flex-end;
-              color: var(--font-color);
+              color: var(--font-color-muted);
 
               > span {
                 margin-right: 15px;
@@ -160,7 +164,7 @@
                 font-size: var(--font-size-l);
 
                 @media (min-width: 768px) {
-                  font-size: var(--font-size-);
+                  font-size: var(--font-size-s);
                 }
 
                 .comment-reaction-count {
@@ -203,29 +207,6 @@
           }
         }
       }
-    }
-
-    .input {
-      width: 100%;
-      padding: 12px;
-      border-radius: 12px;
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
-      border: 1.5px solid lightgray;
-      outline: none;
-      transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-      box-shadow: 0px 0px 20px -18px;
-      font-size: var(--font-size-l);
-    }
-
-    .input:hover {
-      box-shadow: 0px 0px 20px -17px;
-    }
-
-    .input:active {
-    }
-
-    .input:focus {
     }
   }
 }

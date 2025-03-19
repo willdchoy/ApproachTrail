@@ -17,9 +17,6 @@
   /* dark colors */
   --color-dark-primary: #212427;
 
-  --color-background: var(--color-light-primary);
-  --color-heading: var(--color-light-primary);
-
   --base-border-radius: 3px;
   --form-border-raduis: var(--base-border-radius);
 
@@ -27,7 +24,6 @@
   --font-size-m: 0.9rem;
   --font-size-l: 1rem;
   --font-size-xl: 1.1rem;
-  --font-color: var(--color-dark-primary);
   --font-bold: 400;
 
   font-family: "Roboto", serif;
@@ -43,14 +39,27 @@
   --breakpoint-tablet: 768px;
   --breakpoint-laptop: 1280px;
   --breakpoint-desktop: 1430px;
+
+  --color-background: var(--color-light-primary);
+  --color-heading: var(--color-light-primary);
+  --font-color: var(--color-dark-primary);
+  --font-color-muted: color-mix(
+    in lab,
+    var(--color-dark-primary) 100%,
+    white 45%
+  );
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: var(--color-light-primary);
-    --base-font-color: var(--font-color);
     --color-background: var(--color-dark-primary);
+    --color-heading: var(--color-light-primary);
     --font-color: var(--base-color-light);
+    --font-color-muted: color-mix(
+      in lab,
+      var(--color-light-primary) 100%,
+      black 45%
+    );
   }
   body {
     background-color: var(--color-background);
@@ -73,7 +82,22 @@ h6 {
   color: var(--base-color-light);
 }
 
-/* dev classes */
-.dev-border {
-  border: 1px solid red;
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border: 1.5px solid lightgray;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow: 0px 0px 20px -18px;
+  font-size: var(--font-size-l);
+}
+input:hover {
+  box-shadow: 0px 0px 20px -17px;
+}
+input:active {
+}
+input:focus {
 }

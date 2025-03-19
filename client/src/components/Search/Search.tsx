@@ -9,7 +9,7 @@ function Search() {
           type="text"
           name="search"
           id="search"
-          placeholder="Search for ...."
+          placeholder="Search for jackets, tents, boots, etc."
         />
       </form>
     </div>
