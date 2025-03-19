@@ -28,15 +28,23 @@ function Product({
         <img src={productImgSrc} alt={name} />
 
         {/* pricing */}
-        <div className="product-container">
+        <div className="product-data">
           <div className="product-pricing">
             <div className="product-from">from</div>
             <span className="product-price" data-cents="00">
               $289.00
             </span>
             <div className="pricing-actions">
-              <span>watching</span>
-              <RiChatFollowUpFill />
+              <span>
+                <span>watching</span>
+                <RiChatFollowUpFill size="2.5rem" color="#990000" />
+              </span>
+              <span>
+                <FaHeart size="1.6rem" color="#990000" />
+              </span>
+              <span>
+                <IoIosShare size="2rem" color="lightblue" />
+              </span>
             </div>
           </div>
           <div className="product-swatches">
@@ -48,7 +56,7 @@ function Product({
       {/* details */}
       <div className="product-details">
         <span className="product-brand">ARC'TERYX</span>
-        <span className="product-name">Atom SL Jacket Women's</span>
+        <span className="product-name">Atom Superlight Jacket Women's</span>
       </div>
 
       {/* comments */}
@@ -61,7 +69,9 @@ function Product({
             <div className="comment-data">
               <div className="comment-header">
                 <span>
-                  <span className="comment-author">William Douglas Choy</span>
+                  <span className="comment-author">
+                    Ghulam Mohiuddin Rahmanzai
+                  </span>
                   <span className="comment-timestamp">3h ago</span>
                 </span>
                 <span>
@@ -70,9 +80,9 @@ function Product({
               </div>
               <div className="comment-body">
                 <p>
-                  That's crazy! I thought the same thing. I'll upload a photo
-                  later! It's so warm!!!!! &nbsp;
-                  &hearts;&hearts;&hearts;&hearts;
+                  I was stranded in the Pakastani mountains for 3 days! It was
+                  like the Murree snowstorm of '95. This thing is so warm!!!!!
+                  🔥🔥🔥🔥🔥
                 </p>
               </div>
               <div className="comment-footer">
@@ -85,7 +95,7 @@ function Product({
                     <span className="comment-reaction-count">14</span>
                   </span>
                   <span className="comment-reaction icon-share">
-                    <IoIosShare size="1.6rem" />
+                    <IoIosShare size="1.5rem" />
                   </span>
                 </span>
               </div>

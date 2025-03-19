@@ -25,7 +25,7 @@
       object-fit: contain;
     }
 
-    .product-container {
+    .product-data {
       position: absolute;
       top: 0;
       right: 0;
@@ -66,11 +66,6 @@
           span {
             font-size: var(--font-size-m);
           }
-
-          svg {
-            fill: #990000;
-            font-size: 2.5rem;
-          }
         }
       }
 
@@ -94,7 +89,7 @@
   }
 
   .comments {
-    --light-grey: #858c95;
+    --light-grey: var(--font-color);
 
     display: flex;
     flex-direction: column;
@@ -138,9 +133,9 @@
           }
 
           .comment-body p {
-            margin: 5px 0;
+            margin: 2px 0 0 0;
             line-height: 1.6;
-            font-size: var(--font-size-l);
+            font-size: var(--font-size-m);
           }
 
           .comment-footer {
@@ -150,7 +145,6 @@
             .comment-reactions {
               display: flex;
               align-items: flex-end;
-              font-size: var(--font-size-l);
               color: var(--light-grey);
 
               > span {
@@ -163,7 +157,7 @@
               }
 
               .comment-reaction {
-                font-size: 1.2rem;
+                font-size: var(--font-size-l);
 
                 @media (min-width: 768px) {
                   font-size: var(--font-size-);
