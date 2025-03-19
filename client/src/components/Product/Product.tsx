@@ -94,9 +94,6 @@ function Product({
                     <FaHeart />
                     <span className="comment-reaction-count">14</span>
                   </span>
-                  <span className="comment-reaction icon-share">
-                    <IoIosShare size="1.5rem" />
-                  </span>
                 </span>
               </div>
             </div>

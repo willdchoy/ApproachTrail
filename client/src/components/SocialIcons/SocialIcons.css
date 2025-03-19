@@ -13,7 +13,7 @@ ul.social-icons {
   }
 
   li {
-    color: var(--base-text-color);
+    color: var(--color-text);
     display: inline-block;
     cursor: pointer;
 
