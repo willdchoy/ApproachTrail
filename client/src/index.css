@@ -16,12 +16,6 @@
   --system-breakpoint-laptop: 1280px;
   --system-breakpoint-desktop: 1430px;
 
-  font-family: "Roboto", serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --system-fontSize-xs: 0.7rem;
@@ -29,11 +23,21 @@
   --system-fontSize-m: 0.9rem;
   --system-fontSize-l: 1rem;
   --system-fontSize-xl: 1.1rem;
-  --system-fontSize-jumbo: 1.5rem;
+  --system-fontSize-kilo: 1.5rem;
+  --system-fontSize-mega: 1.7rem;
+  --system-fontSize-giga: 2rem;
 
   --system-fontWeight-bold: 700;
-  --system-fontWeight-medium: 400;
+  --system-fontWeight-heavy: 400;
+  --system-fontWeight-medium: 300;
   --system-fontWeight-light: 200;
+
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-weight: var(--system-fontWeight-medium);
+  font-style: normal;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
 
   --system-borderRadius-s: 3px;
   --system-borderRadius-m: 5px;
@@ -129,6 +133,7 @@ input {
   transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   box-shadow: 0px 0px 20px -18px;
   font-size: var(--system-fontSize-m);
+  background-color: var(--system-color-backgroundSecondary);
 }
 
 button {

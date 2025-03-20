@@ -20,6 +20,7 @@ interface ProductProps {
 }
 
 function Product({
+  // @ts-expect-error ???
   metadata,
   name,
   // brand_name,
@@ -34,9 +35,7 @@ function Product({
         <div className="product-data">
           <div className="product-pricing">
             <div className="product-from">from</div>
-            <span className="product-price" data-cents="00">
-              $289.00
-            </span>
+            <span className="product-price">$289.00</span>
             <div className="pricing-actions">
               <span>
                 {Math.random() < 0.5 ? (
@@ -88,7 +87,7 @@ function Product({
             <div className="comment-profile-image">
               <img src={profileImage} alt="" />
             </div>
-            <div className="comment-data">
+            <div className="comment-message">
               <div className="comment-header">
                 <span>
                   <span className="comment-author">
@@ -97,7 +96,9 @@ function Product({
                   <span className="comment-timestamp">3h ago</span>
                 </span>
                 <span>
-                  <BsThreeDotsVertical />
+                  <a href="#">
+                    <BsThreeDotsVertical />
+                  </a>
                 </span>
               </div>
               <div className="comment-body">
@@ -120,22 +121,24 @@ function Product({
               </div>
             </div>
           </div>
-          <div className="comment-count">
-            <a href="#">Load 17 comments</a>
-          </div>
 
           {/* comment bar */}
           <div className="comment-bar">
-            <input
-              placeholder="Join the conversation"
-              type="text"
-              name="text"
-              className="input"
-            />
-            <span className="comment-actions">
-              <MdAddReaction />
-              <FaCloudUploadAlt />
-            </span>
+            <div className="comment-count">
+              <a href="#">Load 17 comments</a>
+            </div>
+            <div className="comment-actions">
+              <input
+                placeholder="Join the conversation"
+                type="text"
+                name="text"
+                className="input"
+              />
+              <span className="comment-actions-icons">
+                <MdAddReaction />
+                <FaCloudUploadAlt />
+              </span>
+            </div>
           </div>
         </div>
       </div>
