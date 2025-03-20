@@ -12,6 +12,8 @@ function Comments() {
 
   return (
     <div className="comments">
+      {!comments.length ? <CommentPlaceholder /> : undefined}
+
       <div className="comment-thread">{comments}</div>
 
       <div className="comment-bar">
@@ -77,6 +79,17 @@ function Comment() {
           </span>
         </div>
       </div>
+    </div>
+  );
+}
+
+function CommentPlaceholder() {
+  return (
+    <div className="comment-placeholder">
+      Start the conversation! &nbsp;
+      <a href="#" className="secondary">
+        Sign In
+      </a>
     </div>
   );
 }

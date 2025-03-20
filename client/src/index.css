@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 *,
 *::before,
@@ -35,12 +35,10 @@
   --system-fontWeight-medium: 300;
   --system-fontWeight-light: 200;
 
-  font-family: "Roboto", serif;
+  font-family: "Mulish", sans-serif;
   font-optical-sizing: auto;
-  font-weight: var(--system-fontWeight-medium);
+  font-weight: 300;
   font-style: normal;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
 
   --system-borderRadius-s: 3px;
   --system-borderRadius-m: 5px;
@@ -115,6 +113,10 @@ h6 {
 a {
   color: var(--system-fontSize-m);
   text-decoration: none;
+
+  &.secondary {
+    color: var(--system-color-linkSecondary);
+  }
 }
 
 p {

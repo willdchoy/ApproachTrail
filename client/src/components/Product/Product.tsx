@@ -25,6 +25,7 @@ function Product({
 }: ProductProps) {
   return (
     <div className="product" data-product-id={metadata.product_id}>
+      <div className="product-card-background" />
       <div className="product-image">
         <img src={productImgSrc} alt={name} />
 
