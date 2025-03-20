@@ -35,7 +35,8 @@
   --system-fontWeight-medium: 400;
   --system-fontWeight-light: 200;
 
-  --system-borderRadius: 3px;
+  --system-borderRadius-s: 3px;
+  --system-borderRadius-l: 5px;
   --system-margin-s: 5px;
   --system-margin-m: 10px;
   --system-margin-l: 15px;

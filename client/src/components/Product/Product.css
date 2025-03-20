@@ -2,7 +2,7 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--system-color-backgroundPrimary);
-  border-radius: var(--system-borderRadius);
+  border-radius: var(--system-borderRadius-s);
   border-bottom: 1px solid lightgrey;
 
   @media (min-width: 500px) {
@@ -101,7 +101,7 @@
     }
     span.product-name {
       font-size: var(--font-size-l);
-      font-weight: 400;
+      font-weight: var(--system-fontWeight-medium);
     }
     .product-swatches img {
       cursor: pointer;
@@ -132,7 +132,7 @@
         .comment-profile-image {
           img {
             height: 50px;
-            margin-right: 10px;
+            margin-right: var(--system-margin-m);
           }
         }
 
@@ -143,7 +143,7 @@
 
             .comment-author {
               margin-right: var(--system-margin-m);
-              font-weight: bold;
+              font-weight: var(--system-fontWeight-bold);
             }
 
             .comment-timestamp {
