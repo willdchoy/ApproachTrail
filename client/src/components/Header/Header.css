@@ -1,5 +1,6 @@
 .header-grid-logo {
   grid-area: logo;
+  justify-self: flex-start;
 }
 .header-grid-search {
   grid-area: search;
@@ -15,6 +16,7 @@ header {
     "logo user"
     "search search";
   align-items: center;
+
   background-color: var(--system-color-all-darkGrey);
   color: white;
 

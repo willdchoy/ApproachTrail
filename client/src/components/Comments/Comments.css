@@ -15,15 +15,21 @@
     flex-direction: column;
     justify-content: flex-start;
     height: 100%;
-    max-height: 200px;
+    max-height: 150px;
     padding: var(--system-margin-m);
-    margin-bottom: var(--system-margin-s);
     overflow-y: auto;
 
     .comment {
       display: flex;
       flex-direction: row;
       margin-bottom: var(--system-margin-m);
+
+      .comment-profile-image {
+        img {
+          height: 25px;
+          margin-right: var(--system-margin-m);
+        }
+      }
 
       .comment-message {
         width: 100%;
@@ -92,7 +98,7 @@
   }
 }
 .comment-bar {
-  padding: var(--system-margin-s) var(--system-margin-m) 0;
+  padding: var(--system-margin-s) var(--system-margin-s) 0;
 
   .comment-count {
     margin-bottom: var(--system-margin-s);
@@ -113,7 +119,7 @@
 
     svg {
       fill: var(--system-color-actionPrimary-background);
-      font-size: var(--system-fontSize-giga);
+      font-size: var(--system-fontSize-mega);
       margin-left: var(--system-margin-l);
       cursor: pointer;
 

@@ -1,4 +1,5 @@
 import "./Comments.css";
+import profileImage from "@/assets/profile.png";
 import { faker } from "@faker-js/faker";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaCloudUploadAlt } from "react-icons/fa";
@@ -44,6 +45,9 @@ function Comment() {
 
   return (
     <div className="comment">
+      <div className="comment-profile-image">
+        <img src={profileImage} alt="" />
+      </div>
       <div className="comment-message">
         <div className="comment-header">
           <span>

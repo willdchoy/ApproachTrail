@@ -59,29 +59,32 @@
   --system-color-light-mediumGrey: rgb(53, 58, 62);
   --system-color-light-lightGrey: rgb(84, 90, 97);
   --system-color-light-darkGreen: rgb(1, 72, 71);
+  --system-color-light-burntOrange: rgb(211, 84, 0);
+
+  /* base colors dark */
+  --system-color-dark-black: rgb(6, 11, 16);
+  --system-color-dark-darkGrey: rgb(30, 36, 44);
+  --system-color-dark-lightGrey: rgb(126, 135, 146);
+  --system-color-dark-white: rgb(255, 255, 255);
+  --system-color-dark-offWhite: rgb(230, 236, 242);
+  --system-color-dark-neonGreen: rgb(5, 189, 186);
 
   /* light theme */
-  --system-color-backgroundPrimary: var(--system-color-light-white);
+  --system-color-backgroundPrimary: var(--system-color-dark-black);
   --system-color-backgroundSecondary: var(--system-color-light-white);
   --system-color-headingPrimary: var(--system-color-light-darkGrey);
   --system-color-textPrimary: var(--system-color-light-mediumGrey);
   --system-color-textSecondary: var(--system-color-light-lightGrey);
   --system-color-linkPrimary: var(--system-color-light-lightGrey);
   --system-color-linkSecondary: var(--system-color-light-darkGreen);
-  --system-color-actionPrimary-background: var(--system-color-light-darkGreen);
+  --system-color-actionPrimary-background: var(
+    --system-color-light-burntOrange
+  );
   --system-color-actionPrimary-text: var(--system-color-light-white);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* base colors dark */
-    --system-color-dark-black: rgb(6, 11, 16);
-    --system-color-dark-darkGrey: rgb(30, 36, 44);
-    --system-color-dark-lightGrey: rgb(126, 135, 146);
-    --system-color-dark-white: rgb(255, 255, 255);
-    --system-color-dark-offWhite: rgb(230, 236, 242);
-    --system-color-dark-neonGreen: rgb(5, 189, 186);
-
     /* dark theme */
     --system-color-backgroundPrimary: var(--system-color-dark-black);
     --system-color-backgroundSecondary: var(--system-color-dark-darkGrey);
