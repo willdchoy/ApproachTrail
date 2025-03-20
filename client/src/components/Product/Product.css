@@ -73,13 +73,13 @@
             cursor: pointer;
             text-align: center;
             width: 41px;
-            font-size: var(--font-size-m);
+            font-size: var(--system-fontSize-m);
           }
 
           span.pricing-actions-count {
             position: relative;
             top: -6px;
-            font-size: var(--font-size-xs);
+            font-size: var(--system-fontSize-xs);
           }
         }
       }
@@ -99,10 +99,10 @@
 
     span.product-brand {
       display: block;
-      font-size: var(--font-size-s);
+      font-size: var(--system-fontSize-s);
     }
     span.product-name {
-      font-size: var(--font-size-l);
+      font-size: var(--system-fontSize-l);
       font-weight: var(--system-fontWeight-medium);
     }
     .product-swatches img {
@@ -149,7 +149,7 @@
             }
 
             .comment-timestamp {
-              font-size: var(--font-size-s);
+              font-size: var(--system-fontSize-s);
               color: var(--font-color-muted);
             }
           }
@@ -174,10 +174,10 @@
 
               .comment-reaction {
                 cursor: pointer;
-                font-size: var(--font-size-l);
+                font-size: var(--system-fontSize-l);
 
                 @media (min-width: 768px) {
-                  font-size: var(--font-size-s);
+                  font-size: var(--system-fontSize-s);
                 }
 
                 .comment-reaction-count {
