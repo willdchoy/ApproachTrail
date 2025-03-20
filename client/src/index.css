@@ -36,13 +36,17 @@
   --system-fontWeight-light: 200;
 
   --system-borderRadius-s: 3px;
-  --system-borderRadius-l: 5px;
+  --system-borderRadius-m: 5px;
   --system-margin-s: 5px;
   --system-margin-m: 10px;
   --system-margin-l: 15px;
   --system-padding-s: 5px;
   --system-padding-m: 10px;
   --system-padding-l: 15px;
+
+  /* base colors all themes */
+  --system-color-all-white: rgb(255, 255, 255);
+  --system-color-all-darkGrey: rgb(24, 26, 28);
 
   /* base colors light */
   --system-color-light-white: rgb(255, 255, 255);
@@ -60,29 +64,31 @@
   --system-color-textSecondary: var(--system-color-light-lightGrey);
   --system-color-linkPrimary: var(--system-color-light-lightGrey);
   --system-color-linkSecondary: var(--system-color-light-darkGreen);
-  --system-color-actionPrimary: var(--system-color-light-mediumBlue);
+  --system-color-actionPrimary-background: var(--system-color-light-mediumBlue);
+  --system-color-actionPrimary-text: var(--system-color-light-white);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     /* base colors dark */
     --system-color-dark-black: rgb(6, 11, 16);
-    --system-color-dark-grey: rgb(30, 36, 44);
+    --system-color-dark-darkGrey: rgb(30, 36, 44);
     --system-color-dark-lightGrey: rgb(126, 135, 146);
     --system-color-dark-white: rgb(255, 255, 255);
     --system-color-dark-offWhite: rgb(230, 236, 242);
     --system-color-dark-neonGreen: rgb(5, 189, 186);
-    --system-color-light-mediumBlue: rgb(46, 81, 237);
+    --system-color-dark-lightBlue: rgb(173, 216, 230);
 
     /* dark theme */
     --system-color-backgroundPrimary: var(--system-color-dark-black);
-    --system-color-backgroundSecondary: var(--system-color-dark-grey);
+    --system-color-backgroundSecondary: var(--system-color-dark-darkGrey);
     --system-color-headingPrimary: var(--system-color-dark-white);
     --system-color-textPrimary: var(--system-color-dark-offWhite);
     --system-color-textSecondary: var(--system-color-dark-lightGrey);
     --system-color-linkPrimary: var(--system-color-light-lightGrey);
     --system-color-linkSecondary: var(--system-color-dark-neonGreen);
-    --system-color-actionPrimary: var(--system-color-light-mediumBlue);
+    --system-color-actionPrimary-background: var(--system-color-dark-lightBlue);
+    --system-color-actionPrimary-text: var(--system-color-dark-darkGrey);
   }
 }
 
@@ -114,8 +120,8 @@ p {
 
 input {
   width: 100%;
-  padding: 12px;
-  border-radius: 5px;
+  padding: var(--system-padding-m);
+  border-radius: var(--system-borderRadius-m);
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   border: 1.5px solid lightgray;
@@ -126,12 +132,12 @@ input {
 }
 
 button {
-  padding: 5px;
-  text-align: center;
-  font-size: var(--font-size-s);
-  color: white;
-  background: var(--system-color-actionPrimary);
+  padding: var(--system-padding-s);
+  font-size: var(--system-fontSize-m);
+  color: var(--system-color-actionPrimary-text);
+  background: var(--system-color-actionPrimary-background);
+  border-radius: var(--system-borderRadius-s);
   cursor: pointer;
-  border-radius: 3px;
+  text-align: center;
   border: none;
 }

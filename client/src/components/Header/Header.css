@@ -16,10 +16,11 @@ header {
     "search search";
   align-items: center;
 
-  background-color: var(--color-primary-dark);
+  background-color: var(--system-color-all-darkGrey);
   color: white;
 
   h1 {
+    color: var(--system-color-all-white);
     margin: 0;
   }
 
