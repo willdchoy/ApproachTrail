@@ -61,7 +61,6 @@
   --system-color-light-mediumGrey: rgb(53, 58, 62);
   --system-color-light-lightGrey: rgb(84, 90, 97);
   --system-color-light-darkGreen: rgb(1, 72, 71);
-  --system-color-light-mediumBlue: rgb(46, 81, 237);
 
   /* light theme */
   --system-color-backgroundPrimary: var(--system-color-light-white);
@@ -71,7 +70,7 @@
   --system-color-textSecondary: var(--system-color-light-lightGrey);
   --system-color-linkPrimary: var(--system-color-light-lightGrey);
   --system-color-linkSecondary: var(--system-color-light-darkGreen);
-  --system-color-actionPrimary-background: var(--system-color-light-mediumBlue);
+  --system-color-actionPrimary-background: var(--system-color-light-darkGreen);
   --system-color-actionPrimary-text: var(--system-color-light-white);
 }
 
@@ -84,7 +83,6 @@
     --system-color-dark-white: rgb(255, 255, 255);
     --system-color-dark-offWhite: rgb(230, 236, 242);
     --system-color-dark-neonGreen: rgb(5, 189, 186);
-    --system-color-dark-lightBlue: rgb(173, 216, 230);
 
     /* dark theme */
     --system-color-backgroundPrimary: var(--system-color-dark-black);
@@ -94,7 +92,7 @@
     --system-color-textSecondary: var(--system-color-dark-lightGrey);
     --system-color-linkPrimary: var(--system-color-light-lightGrey);
     --system-color-linkSecondary: var(--system-color-dark-neonGreen);
-    --system-color-actionPrimary-background: var(--system-color-dark-lightBlue);
+    --system-color-actionPrimary-background: var(--system-color-dark-neonGreen);
     --system-color-actionPrimary-text: var(--system-color-dark-darkGrey);
   }
 }

@@ -1,9 +1,6 @@
 import "./Product.css";
+import Comments from "@/components/Comments/Comments";
 import { faker } from "@faker-js/faker";
-import { BsThreeDotsVertical } from "react-icons/bs";
-import { FaCloudUploadAlt } from "react-icons/fa";
-import { MdAddReaction } from "react-icons/md";
-import { FaHeart } from "react-icons/fa";
 import productImage from "@/assets/product.jpg";
 import productSwatch from "@/assets/product-swatch.png";
 import { PiHeartThin } from "react-icons/pi";
@@ -35,23 +32,27 @@ function Product({
         <div className="product-data">
           <div className="product-pricing">
             <div className="product-from">from</div>
-            <span className="product-price">$289.00</span>
+            <span className="product-price">${faker.commerce.price()}</span>
             <div className="pricing-actions">
               <span>
                 {Math.random() < 0.5 ? (
-                  <PiTagSimpleFill color="#3D6B41" />
+                  <PiTagSimpleFill color="#05bdba" />
                 ) : (
                   <PiTagSimpleThin color="gray" />
                 )}
-                <span className="pricing-actions-count">1,532</span>
+                <span className="pricing-actions-count">
+                  {faker.number.int(10000)}
+                </span>
               </span>
               <span>
                 {Math.random() < 0.5 ? (
                   <PiHeartThin size="1.7rem" color="gray" />
                 ) : (
-                  <PiHeartFill size="1.7rem" color="#990000" />
+                  <PiHeartFill size="1.7rem" color="#9c2a25" />
                 )}
-                <span className="pricing-actions-count">9,565</span>
+                <span className="pricing-actions-count">
+                  {faker.number.int(10000)}
+                </span>
               </span>
               <span>
                 <PiShareFatThin size="2.3rem" color="gray" />
@@ -64,10 +65,10 @@ function Product({
       {/* details */}
       <div className="product-details">
         <span className="product-brand">
-          <a href="#">ARC'TERYX</a>
+          <a href="#">{faker.company.name()}</a>
         </span>
         <span className="product-name">
-          <a href="#">Atom Superlight Jacket Women's</a>
+          <a href="#">{faker.commerce.productName()}</a>
         </span>
 
         <div className="product-details-row">
@@ -81,106 +82,7 @@ function Product({
       </div>
 
       {/* comments */}
-      <div className="comments">
-        <div className="comment-thread">
-          <div className="comment">
-            <div className="comment-message">
-              <div className="comment-header">
-                <span>
-                  <span className="comment-author">
-                    {faker.internet.displayName()}
-                  </span>
-                  <span className="comment-timestamp">
-                    {faker.number.bigInt({ max: 23n })}
-                    {Math.random() < 0.5 ? "h" : "d"} ago
-                  </span>
-                </span>
-                <span>
-                  <a href="#">
-                    <BsThreeDotsVertical />
-                  </a>
-                </span>
-              </div>
-              <div className="comment-body">
-                <p>{faker.lorem.lines({ min: 1, max: 6 })}</p>
-                {Math.random() < 0.5 ? faker.internet.emoji() : undefined}
-                {Math.random() < 0.5 ? faker.internet.emoji() : undefined}
-                {Math.random() < 0.5 ? faker.internet.emoji() : undefined}
-              </div>
-              <div className="comment-footer">
-                <span className="comment-reactions">
-                  <span className="comment-reaction">
-                    <span className="comment-reply">Reply</span>
-                  </span>
-                  <span className="comment-reaction icon-heart">
-                    <FaHeart />
-                    <span className="comment-reaction-count">
-                      {faker.number.bigInt({ max: 100n })}
-                    </span>
-                  </span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div className="comment">
-            <div className="comment-message">
-              <div className="comment-header">
-                <span>
-                  <span className="comment-author">
-                    {faker.internet.displayName()}
-                  </span>
-                  <span className="comment-timestamp">3h ago</span>
-                </span>
-                <span>
-                  <a href="#">
-                    <BsThreeDotsVertical />
-                  </a>
-                </span>
-              </div>
-              <div className="comment-body">
-                <p>
-                  {faker.lorem.lines({ min: 1, max: 3 })}
-                  {Math.random() < 0.5 ? faker.internet.emoji() : undefined}
-                  {Math.random() < 0.5 ? faker.internet.emoji() : undefined}
-                  {Math.random() < 0.5 ? faker.internet.emoji() : undefined}
-                </p>
-              </div>
-              <div className="comment-footer">
-                <span className="comment-reactions">
-                  <span className="comment-reaction">
-                    <span className="comment-reply">Reply</span>
-                  </span>
-                  <span className="comment-reaction icon-heart">
-                    <FaHeart />
-                    <span className="comment-reaction-count">
-                      {faker.number.bigInt({ max: 100n })}
-                    </span>
-                  </span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* comment bar */}
-      <div className="comment-bar">
-        <div className="comment-count">
-          <a href="#">Load {faker.number.bigInt({ max: 50n })} comments</a>
-        </div>
-        <div className="comment-actions">
-          <input
-            placeholder="Join the conversation"
-            type="text"
-            name="text"
-            className="input"
-          />
-          <span className="comment-actions-icons">
-            <MdAddReaction />
-            <FaCloudUploadAlt />
-          </span>
-        </div>
-      </div>
+      <Comments />
     </div>
   );
 }
