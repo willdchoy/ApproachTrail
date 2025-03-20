@@ -1,13 +1,16 @@
+import "./Product.css";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaCloudUploadAlt } from "react-icons/fa";
-import { RiChatFollowUpFill } from "react-icons/ri";
 import { MdAddReaction } from "react-icons/md";
 import { FaHeart } from "react-icons/fa";
-import { IoIosShare } from "react-icons/io";
-import "./Product.css";
 import productImage from "@/assets/product.jpg";
 import productSwatch from "@/assets/product-swatch.png";
 import profileImage from "@/assets/profile.png";
+import { PiHeartThin } from "react-icons/pi";
+import { PiShareFatThin } from "react-icons/pi";
+import { PiTagSimpleThin } from "react-icons/pi";
+import { PiHeartFill } from "react-icons/pi";
+import { PiTagSimpleFill } from "react-icons/pi";
 
 interface ProductProps {
   product_id: number;
@@ -17,13 +20,13 @@ interface ProductProps {
 }
 
 function Product({
-  product_id,
+  metadata,
   name,
   // brand_name,
   productImgSrc = productImage,
 }: ProductProps) {
   return (
-    <div className="product" data-product-id={product_id}>
+    <div className="product" data-product-id={metadata.product_id}>
       <div className="product-image">
         <img src={productImgSrc} alt={name} />
 
@@ -36,27 +39,46 @@ function Product({
             </span>
             <div className="pricing-actions">
               <span>
-                <span>watching</span>
-                <RiChatFollowUpFill size="2.5rem" color="#990000" />
+                {Math.random() < 0.5 ? (
+                  <PiTagSimpleFill size="2.5rem" color="#3D6B41" />
+                ) : (
+                  <PiTagSimpleThin size="2.5rem" color="gray" />
+                )}
+                <span className="pricing-actions-count">1,532</span>
               </span>
               <span>
-                <FaHeart size="1.6rem" color="#990000" />
+                {Math.random() < 0.5 ? (
+                  <PiHeartThin size="1.7rem" color="gray" />
+                ) : (
+                  <PiHeartFill size="1.7rem" color="#990000" />
+                )}
+                <span className="pricing-actions-count">9,565</span>
               </span>
               <span>
-                <IoIosShare size="2rem" color="lightblue" />
+                <PiShareFatThin size="2.3rem" color="gray" />
               </span>
             </div>
-          </div>
-          <div className="product-swatches">
-            <img src={productSwatch} alt="" />
           </div>
         </div>
       </div>
 
       {/* details */}
       <div className="product-details">
-        <span className="product-brand">ARC'TERYX</span>
-        <span className="product-name">Atom Superlight Jacket Women's</span>
+        <span className="product-brand">
+          <a href="#">ARC'TERYX</a>
+        </span>
+        <span className="product-name">
+          <a href="#">Atom Superlight Jacket Women's</a>
+        </span>
+
+        <div className="product-details-row">
+          <div className="product-swatches">
+            <img src={productSwatch} alt="" />
+          </div>
+          <div>
+            <button>View Prices</button>
+          </div>
+        </div>
       </div>
 
       {/* comments */}
@@ -98,7 +120,9 @@ function Product({
               </div>
             </div>
           </div>
-          <div className="comment-count">Load 17 comments</div>
+          <div className="comment-count">
+            <a href="#">Load 17 comments</a>
+          </div>
 
           {/* comment bar */}
           <div className="comment-bar">

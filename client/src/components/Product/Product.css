@@ -1,10 +1,8 @@
 .product {
-  color: var(--font-color);
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: var(--color-background);
-  border-radius: 3px;
+  background-color: var(--system-color-backgroundPrimary);
+  border-radius: var(--system-borderRadius);
   border-bottom: 1px solid lightgrey;
 
   @media (min-width: 500px) {
@@ -39,26 +37,25 @@
       justify-content: space-between;
       align-items: flex-end;
       text-align: right;
-      color: var(--color-dark-primary);
 
       .product-pricing {
         height: 25px;
         width: 100px;
         padding: 3px;
-        margin-right: 5px;
+        margin-right: var(--system-margin-s);
 
         .product-from {
           position: relative;
           top: 5px;
           width: 100%;
           text-align: right;
-          font-size: var(--font-size-s);
+          font-size: var(--system-fontSize-xs);
         }
 
         .product-price {
           width: 100%;
           text-align: right;
-          font-size: 1.5rem;
+          font-size: var(--system-fontSize-jumbo);
           font-weight: bold;
         }
 
@@ -66,23 +63,38 @@
           display: flex;
           flex-direction: column;
           align-items: flex-end;
-          margin-top: 5px;
+          position: relative;
+          right: 0px;
+          margin-top: var(--system-margin-s);
 
           span {
+            cursor: pointer;
+            text-align: center;
+            width: 41px;
             font-size: var(--font-size-m);
           }
-        }
-      }
 
-      .product-swatches {
-        width: 40px;
-        margin: 5px;
+          span.pricing-actions-count {
+            position: relative;
+            top: -8px;
+            font-size: var(--font-size-xs);
+          }
+        }
       }
     }
   }
 
   .product-details {
-    padding: 5px;
+    padding: var(--system-margin-s);
+
+    .product-details-row {
+      margin-top: var(--system-margin-s);
+      padding: 0 var(--system-margin-s);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
     span.product-brand {
       display: block;
       font-size: var(--font-size-s);
@@ -90,6 +102,11 @@
     span.product-name {
       font-size: var(--font-size-l);
       font-weight: 400;
+    }
+    .product-swatches img {
+      cursor: pointer;
+      height: 40px;
+      margin-right: 8px;
     }
   }
 
@@ -102,16 +119,15 @@
     width: 100%;
     height: 100%;
     border-top: 1px solid lightgrey;
-    font-size: var(--font-size-m);
 
     .comment-thread {
-      padding: 0 10px;
+      padding: 0 var(--system-margin-m);
 
       .comment {
         display: flex;
         flex-direction: row;
-        margin-bottom: 15px;
-        padding-top: 10px;
+        margin-bottom: var(--system-margin-m);
+        padding-top: var(--system-margin-m);
 
         .comment-profile-image {
           img {
@@ -126,7 +142,7 @@
             justify-content: space-between;
 
             .comment-author {
-              margin-right: 10px;
+              margin-right: var(--system-margin-m);
               font-weight: bold;
             }
 
@@ -134,12 +150,6 @@
               font-size: var(--font-size-s);
               color: var(--font-color-muted);
             }
-          }
-
-          .comment-body p {
-            margin: 2px 0 5px 0;
-            line-height: 1.6;
-            font-size: var(--font-size-m);
           }
 
           .comment-footer {
@@ -152,7 +162,7 @@
               color: var(--font-color-muted);
 
               > span {
-                margin-right: 15px;
+                margin-right: var(--system-margin-l);
               }
 
               svg {
@@ -161,6 +171,7 @@
               }
 
               .comment-reaction {
+                cursor: pointer;
                 font-size: var(--font-size-l);
 
                 @media (min-width: 768px) {
@@ -181,15 +192,14 @@
       }
 
       .comment-count {
-        font-size: var(--font-size-m);
-        color: var(--font-color);
-        margin: 10px 0 10px 10px;
+        margin: var(--system-margin-m);
+        margin-right: 0;
       }
     }
 
     .comment-bar {
       position: relative;
-      padding: 0 5px;
+      padding: 0 var(--system-margin-m);
 
       .comment-actions {
         position: absolute;
@@ -199,7 +209,7 @@
         svg {
           fill: lightblue;
           font-size: 1.6rem;
-          margin-left: 15px;
+          margin-left: var(--system-margin-l);
           cursor: pointer;
 
           @media (min-width: 768px) {
