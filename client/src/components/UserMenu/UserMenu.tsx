@@ -1,10 +1,11 @@
 import "./UserMenu.css";
+import profileImage from "@/assets/profile.png";
 
 function UserMenu() {
   return (
     <div className="user-menu header-grid-user">
       <a href="#">
-        <i className="fa-solid fa-person-hiking"></i>
+        <img src={profileImage} />
       </a>
     </div>
   );
