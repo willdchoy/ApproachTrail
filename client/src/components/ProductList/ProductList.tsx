@@ -13,22 +13,22 @@ function ProductList() {
     <div className="product-list">
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={product.product_id} {...product} />;
+            return <Product key={Math.random()} {...product} />;
           })
         : "No products available!"}
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={product.product_id} {...product} />;
+            return <Product key={Math.random()} {...product} />;
           })
         : "No products available!"}
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={product.product_id} {...product} />;
+            return <Product key={Math.random()} {...product} />;
           })
         : "No products available!"}
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={product.product_id} {...product} />;
+            return <Product key={Math.random()} {...product} />;
           })
         : "No products available!"}
     </div>

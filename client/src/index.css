@@ -4,10 +4,13 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  -webkit-text-size-adjust: none;
 }
 
 :root {
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   color-scheme: light dark;
 
   /* system theme */
@@ -145,4 +148,24 @@ button {
   cursor: pointer;
   text-align: center;
   border: none;
+}
+
+/* prevent IOS from zooming on keyboard */
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+select:focus,
+textarea {
+  font-size: 16px;
 }

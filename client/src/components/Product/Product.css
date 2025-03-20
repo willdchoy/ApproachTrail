@@ -48,7 +48,7 @@
 
         .product-from {
           position: relative;
-          top: 5px;
+          top: 4px;
           width: 100%;
           text-align: right;
           font-size: var(--system-fontSize-xs);
@@ -57,7 +57,7 @@
         .product-price {
           width: 100%;
           text-align: right;
-          font-size: var(--system-fontSize-jumbo);
+          font-size: var(--system-fontSize-kilo);
           font-weight: bold;
         }
 
@@ -65,18 +65,23 @@
           display: flex;
           flex-direction: column;
           align-items: flex-end;
-          position: relative;
-          right: 0px;
-          margin-top: var(--system-margin-s);
 
           span {
             cursor: pointer;
             text-align: center;
             width: 41px;
             font-size: var(--system-fontSize-m);
+
+            svg {
+              font-size: 3rem;
+
+              @media (min-width: 768px) {
+                font-size: var(--system-fontSize-mega);
+              }
+            }
           }
 
-          span.pricing-actions-count {
+          .pricing-actions-count {
             position: relative;
             top: -6px;
             font-size: var(--system-fontSize-xs);
@@ -123,7 +128,7 @@
     .comment-thread {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
       height: 100%;
       padding: var(--system-margin-m);
       padding-bottom: 0;
@@ -131,16 +136,11 @@
       .comment {
         display: flex;
         flex-direction: row;
-        margin-bottom: var(--system-margin-l);
-
-        .comment-profile-image {
-          img {
-            height: 25px;
-            margin-right: var(--system-margin-m);
-          }
-        }
+        margin-bottom: var(--system-margin-m);
 
         .comment-message {
+          margin-bottom: var(--system-margin-s);
+
           .comment-header {
             display: flex;
             justify-content: space-between;
@@ -159,7 +159,7 @@
 
           .comment-body p {
             margin: 0;
-            font-size: var(--system-fontSize-s);
+            font-size: var(--system-fontSize-m);
             margin-bottom: var(--system-margin-s);
           }
 
@@ -202,34 +202,33 @@
         }
       }
     }
+  }
+  .comment-bar {
+    padding: 0 var(--system-margin-m);
 
-    .comment-bar {
-      padding: 0 var(--system-margin-m);
+    .comment-count {
+      margin-bottom: var(--system-margin-s);
+      font-size: var(--system-fontSize-s);
+    }
 
-      .comment-count {
-        margin-bottom: var(--system-margin-s);
-        font-size: var(--system-fontSize-s);
+    .comment-actions {
+      position: relative;
+
+      .comment-actions-icons {
+        position: absolute;
+        top: 6px;
+        right: 7px;
       }
 
-      .comment-actions {
-        position: relative;
+      svg {
+        fill: lightblue;
+        font-size: var(--system-fontSize-giga);
+        margin-left: var(--system-margin-l);
+        cursor: pointer;
 
-        .comment-actions-icons {
-          position: absolute;
-          top: 6px;
-          right: 7px;
-        }
-
-        svg {
-          fill: lightblue;
-          font-size: var(--system-fontSize-giga);
-          margin-left: var(--system-margin-l);
-          cursor: pointer;
-
-          @media (min-width: 768px) {
-            font-size: var(--system-fontSize-kilo);
-            right: 5%;
-          }
+        @media (min-width: 768px) {
+          font-size: var(--system-fontSize-kilo);
+          right: 5%;
         }
       }
     }
