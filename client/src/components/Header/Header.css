@@ -17,17 +17,12 @@ header {
     "search search";
   align-items: center;
 
-  background-color: var(--system-color-all-darkGrey);
-  color: white;
+  background-color: var(--colorBackgroundPrimary);
+  color: var(--colorAllWhite);
 
   h1 {
-    color: var(--system-color-all-white);
+    color: var(--colorAllWhite);
     margin: 0;
-  }
-
-  div.user-menu {
-    justify-self: right;
-    margin-right: 25px;
   }
 }
 
@@ -36,9 +31,5 @@ header {
     gap: 20px;
     grid-template-columns: 170px 1fr 60px;
     grid-template-areas: "logo search user";
-
-    div.user-menu {
-      justify-self: center;
-    }
   }
 }

@@ -37,7 +37,7 @@ function Product({
             <div className="pricing-actions">
               <span>
                 {Math.random() < 0.5 ? (
-                  <PiTagSimpleFill color="#05bdba" />
+                  <PiTagSimpleFill color="rgb(255, 106, 51)" />
                 ) : (
                   <PiTagSimpleThin color="gray" />
                 )}

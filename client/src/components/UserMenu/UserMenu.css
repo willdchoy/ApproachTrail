@@ -1,4 +1,15 @@
 .user-menu {
+  display: flex;
+  justify-content: flex-end;
+
+  a {
+    margin-right: var(--marginL);
+  }
+
+  @media (min-width: 500px) {
+    justify-content: flex-end;
+  }
+
   a img {
     width: 45px;
   }

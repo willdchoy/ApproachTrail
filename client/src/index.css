@@ -14,94 +14,93 @@
   color-scheme: light dark;
 
   /* system theme */
-  --system-breakpoint-mobile: 480px;
-  --system-breakpoint-tablet: 768px;
-  --system-breakpoint-laptop: 1280px;
-  --system-breakpoint-desktop: 1430px;
+  --breakpointMobile: 480px;
+  --breakpointTablet: 768px;
+  --breakpointLaptop: 1280px;
+  --breakpointDesktop: 1430px;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --system-fontSize-xs: 0.7rem;
-  --system-fontSize-s: 0.8rem;
-  --system-fontSize-m: 0.9rem;
-  --system-fontSize-l: 1rem;
-  --system-fontSize-xl: 1.1rem;
-  --system-fontSize-kilo: 1.5rem;
-  --system-fontSize-mega: 1.7rem;
-  --system-fontSize-giga: 2rem;
+  --fontSizeXs: 0.7rem;
+  --fontSizeS: 0.8rem;
+  --fontSizeM: 0.9rem;
+  --fontSizeL: 1rem;
+  --fontSizeXl: 1.1rem;
+  --fontSizeKilo: 1.5rem;
+  --fontSizeMega: 1.7rem;
+  --fontSizeGiga: 2rem;
 
-  --system-fontWeight-bold: 700;
-  --system-fontWeight-heavy: 400;
-  --system-fontWeight-medium: 300;
-  --system-fontWeight-light: 200;
+  --fontWeightBold: 700;
+  --fontWeightBoldMedium: 400;
+  --fontWeightBoldLight: 300;
 
   font-family: "Mulish", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
 
-  --system-borderRadius-s: 3px;
-  --system-borderRadius-m: 5px;
-  --system-margin-s: 5px;
-  --system-margin-m: 10px;
-  --system-margin-l: 15px;
-  --system-padding-s: 5px;
-  --system-padding-m: 10px;
-  --system-padding-l: 15px;
+  --borderRadiusS: 3px;
+  --borderRadiusM: 5px;
+  --marginS: 5px;
+  --marginM: 10px;
+  --marginL: 15px;
+  --paddingS: 5px;
+  --paddingM: 10px;
+  --paddingL: 15px;
 
   /* base colors all themes */
-  --system-color-all-white: rgb(255, 255, 255);
-  --system-color-all-darkGrey: rgb(24, 26, 28);
+  --colorAllWhite: rgb(255, 255, 255);
+  --colorAllDarkGrey: rgb(24, 26, 28);
 
   /* base colors light */
-  --system-color-light-white: rgb(255, 255, 255);
-  --system-color-light-darkGrey: rgb(24, 26, 28);
-  --system-color-light-mediumGrey: rgb(53, 58, 62);
-  --system-color-light-lightGrey: rgb(84, 90, 97);
-  --system-color-light-darkGreen: rgb(1, 72, 71);
-  --system-color-light-burntOrange: rgb(211, 84, 0);
+  --colorLightWhite: rgb(255, 255, 255);
+  --colorLightDarkGrey: rgb(24, 26, 28);
+  --colorLightMediumGrey: rgb(53, 58, 62);
+  --colorLightLightGrey: rgb(84, 90, 97);
+  --colorLightDarkGreen: rgb(1, 72, 71);
+  --colorLightBurntOrange: rgb(255, 106, 51); /* rgb(211, 84, 0); */
 
   /* base colors dark */
-  --system-color-dark-black: rgb(6, 11, 16);
-  --system-color-dark-darkGrey: rgb(30, 36, 44);
-  --system-color-dark-lightGrey: rgb(126, 135, 146);
-  --system-color-dark-white: rgb(255, 255, 255);
-  --system-color-dark-offWhite: rgb(230, 236, 242);
-  --system-color-dark-neonGreen: rgb(5, 189, 186);
+  --colorDarkBlack: rgb(23, 24, 35);
+  --colorDarkDarkGrey: rgb(45, 47, 62);
+  --colorDarkMediumGrey: rgb(36, 37, 51);
+  --colorDarkWhite: rgb(255, 255, 255);
+  --colorDarkOffWhite: rgb(230, 236, 242);
+  --colorDarkNeonGreen: rgb(5, 189, 186);
+  --colorDarkBlue: rgb(105, 154, 252);
+  --colorDarkMutedWhite: rgba(255, 255, 255, 0.8);
 
   /* light theme */
-  --system-color-backgroundPrimary: var(--system-color-dark-black);
-  --system-color-backgroundSecondary: var(--system-color-light-white);
-  --system-color-headingPrimary: var(--system-color-light-darkGrey);
-  --system-color-textPrimary: var(--system-color-light-mediumGrey);
-  --system-color-textSecondary: var(--system-color-light-lightGrey);
-  --system-color-linkPrimary: var(--system-color-light-lightGrey);
-  --system-color-linkSecondary: var(--system-color-light-darkGreen);
-  --system-color-actionPrimary-background: var(
-    --system-color-light-burntOrange
-  );
-  --system-color-actionPrimary-text: var(--system-color-light-white);
+  --colorBackgroundPrimary: var(--colorDarkBlack);
+  --colorBackgroundSecondary: var(--colorLightWhite);
+  --colorHeadingPrimary: var(--colorLightDarkGrey);
+  --colorTextPrimary: var(--colorLightMediumGrey);
+  --colorTextSecondary: var(--colorLightLightGrey);
+  --colorLinkPrimary: var(--colorLightLightGrey);
+  --colorLinkSecondary: var(--colorLightDarkGreen);
+  --colorActionPrimaryBackground: var(--colorLightBurntOrange);
+  --colorActionPrimaryText: var(--colorLightWhite);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     /* dark theme */
-    --system-color-backgroundPrimary: var(--system-color-dark-black);
-    --system-color-backgroundSecondary: var(--system-color-dark-darkGrey);
-    --system-color-headingPrimary: var(--system-color-dark-white);
-    --system-color-textPrimary: var(--system-color-dark-offWhite);
-    --system-color-textSecondary: var(--system-color-dark-lightGrey);
-    --system-color-linkPrimary: var(--system-color-light-lightGrey);
-    --system-color-linkSecondary: var(--system-color-dark-neonGreen);
-    --system-color-actionPrimary-background: var(--system-color-dark-neonGreen);
-    --system-color-actionPrimary-text: var(--system-color-dark-darkGrey);
+    --colorBackgroundPrimary: var(--colorDarkBlack);
+    --colorBackgroundSecondary: var(--colorDarkDarkGrey);
+    --colorHeadingPrimary: var(--colorDarkWhite);
+    --colorTextPrimary: var(--colorDarkOffWhite);
+    --colorTextSecondary: var(--colorDarkMediumGrey);
+    --colorLinkPrimary: var(--colorDarkBlue);
+    --colorLinkSecondary: var(--colorDarkMutedWhite);
+    --colorActionPrimaryBackground: var(--colorDarkBlue);
+    --colorActionPrimaryText: var(--colorAllWhite);
   }
 }
 
 body {
   margin: 0 auto;
-  max-width: var(--system-breakpoint-desktop);
-  background-color: var(--system-color-backgroundPrimary);
+  max-width: var(--breakpointDesktop);
+  background-color: var(--colorBackgroundPrimary);
 }
 
 h1,
@@ -110,44 +109,44 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--system-color-headingPrimary);
+  color: var(--colorHeadingPrimary);
 }
 
 a {
-  color: var(--system-fontSize-m);
+  color: var(--fontSizeM);
   text-decoration: none;
 
   &.secondary {
-    color: var(--system-color-linkSecondary);
+    color: var(--colorLinkSecondary);
   }
 }
 
 p {
   line-height: 1.4;
-  color: var(--system-color-textPrimary);
-  font-size: var(--system-fontSize-m);
+  color: var(--colorTextPrimary);
+  font-size: var(--fontSizeM);
 }
 
 input {
   width: 100%;
-  padding: var(--system-padding-m);
-  border-radius: var(--system-borderRadius-m);
+  padding: var(--paddingM);
+  border-radius: var(--borderRadiusM);
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   border: 1.5px solid lightgray;
   outline: none;
   transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   box-shadow: 0px 0px 20px -18px;
-  font-size: var(--system-fontSize-m);
-  background-color: var(--system-color-backgroundSecondary);
+  font-size: var(--fontSizeM);
+  background-color: var(--colorBackgroundSecondary);
 }
 
 button {
-  padding: var(--system-padding-s);
-  font-size: var(--system-fontSize-m);
-  color: var(--system-color-actionPrimary-text);
-  background: var(--system-color-actionPrimary-background);
-  border-radius: var(--system-borderRadius-s);
+  padding: var(--paddingS);
+  font-size: var(--fontSizeM);
+  color: var(--colorActionPrimaryText);
+  background: var(--colorActionPrimaryBackground);
+  border-radius: var(--borderRadiusS);
   cursor: pointer;
   text-align: center;
   border: none;
