@@ -1,0 +1,32 @@
+.vendor-pricing {
+  padding: var(--paddingS);
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    th,
+    td {
+      padding: 5px 2px;
+      text-align: left;
+      /* border-top: 1px solid var(--borderColor); */
+      font-size: var(--fontSizeS);
+      cursor: pointer;
+    }
+
+    th {
+      font-size: var(--fontSizeS);
+    }
+
+    tr {
+      border: 1px solid var(--borderColor);
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+
+    tr:first-child:hover {
+      background-color: transparent;
+    }
+  }
+}

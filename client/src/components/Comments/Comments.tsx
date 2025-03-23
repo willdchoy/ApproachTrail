@@ -54,12 +54,12 @@ function Comment() {
             <span className="comment-author">
               {faker.internet.displayName()}
             </span>
+          </span>
+          <span>
             <span className="comment-timestamp">
               {faker.number.int({ min: 1, max: 23 })}
               {Math.random() < 0.5 ? "h" : "d"} ago
             </span>
-          </span>
-          <span>
             <a href="#">
               <BsThreeDotsVertical />
             </a>

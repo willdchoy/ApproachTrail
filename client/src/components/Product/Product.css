@@ -4,21 +4,21 @@
   background-color: var(--colorBackgroundSecondary);
   border-bottom-right-radius: var(--borderRadiusS);
   border-bottom-left-radius: var(--borderRadiusS);
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 1px solid var(--borderColor);
 
   @media (min-width: 768px) {
     flex: 0 0 24%;
   }
 
   .product-card-background {
-    height: 15px;
+    height: 5px;
     width: 100%;
     background-color: var(--colorActionPrimaryBackground);
   }
 
   .product-image {
     position: relative;
-    border-bottom: 1px solid rgb(239, 237, 237);
+    border-bottom: 1px solid var(--borderColor);
     background-color: var(--colorAllWhite);
 
     img {
@@ -26,75 +26,14 @@
       height: 100%;
       object-fit: contain;
     }
-
-    .product-data {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: flex-end;
-      text-align: right;
-      color: var(--colorAllDarkGrey);
-      font-size: var(--fontSizeXs);
-
-      .product-pricing {
-        height: 25px;
-        width: 100px;
-        padding: 3px;
-        margin-right: var(--marginS);
-
-        .product-from {
-          position: relative;
-          top: 4px;
-          width: 100%;
-          text-align: right;
-          font-size: var(--fontSizeXs);
-        }
-
-        .product-price {
-          width: 100%;
-          text-align: right;
-          font-size: var(--fontSizeKilo);
-          font-weight: bold;
-        }
-
-        .pricing-actions {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-end;
-
-          span {
-            cursor: pointer;
-            text-align: center;
-            width: 41px;
-            font-size: var(--fontSizeM);
-
-            svg {
-              font-size: 2rem;
-
-              @media (min-width: 768px) {
-                font-size: var(--fontSizeMega);
-              }
-            }
-          }
-
-          .pricing-actions-count {
-            position: relative;
-            top: -6px;
-            font-size: var(--fontSizeXs);
-          }
-        }
-      }
-    }
   }
 
   .product-details {
     padding: var(--marginS);
 
     .product-details-row {
+      border-top: 1px solid var(--borderColor);
+      border-bottom: 1px solid var(--borderColor);
       margin-top: var(--marginS);
       padding: 0 var(--marginS);
       display: flex;
@@ -110,10 +49,109 @@
       font-size: var(--fontSizeL);
       font-weight: var(--fontWeightHeavy);
     }
-    .product-swatches img {
-      cursor: pointer;
-      height: 40px;
-      margin-right: 8px;
+
+    .product-pricing {
+      .product-from {
+        position: relative;
+        top: 4px;
+        right: 2px;
+        text-align: right;
+        font-size: var(--fontSizeXs);
+      }
+
+      .product-price {
+        width: 100%;
+        text-align: right;
+        font-size: var(--fontSizeKilo);
+        font-weight: bold;
+      }
+    }
+
+    .product-swatches {
+      --color1: #ede8e0;
+      --color2: #534d3e;
+      --color3: #0a0e0e;
+      --color4: #4c60ab;
+      --swatchSize: 30px;
+
+      display: flex;
+
+      .swatch {
+        cursor: pointer;
+        margin-right: var(--marginM);
+        border-radius: var(--borderRadiusS);
+      }
+
+      .swatch-1 {
+        height: var(--swatchSize);
+        width: var(--swatchSize);
+        background-color: var(--color1);
+      }
+      .swatch-2 {
+        height: var(--swatchSize);
+        width: var(--swatchSize);
+        background-color: var(--color2);
+      }
+      .swatch-3 {
+        height: var(--swatchSize);
+        width: var(--swatchSize);
+        background-color: var(--color3);
+      }
+      .swatch-4 {
+        height: var(--swatchSize);
+        width: var(--swatchSize);
+        background-color: var(--color4);
+      }
+
+      .swatch-more {
+        position: relative;
+        height: var(--swatchSize);
+        width: var(--swatchSize);
+        color: var(--colorAllDarkGrey);
+        font-weight: var(--fontWeightBold);
+        font-size: var(--fontSizeXl);
+        background-color: var(--colorAllWhite);
+
+        &::after {
+          position: absolute;
+          top: 4px;
+          left: 4px;
+          content: "+3";
+        }
+      }
+    }
+  }
+
+  .pricing-reactions {
+    display: none;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    border-bottom: 1px solid var(--borderColor);
+    padding: 0 var(--paddingS);
+    /* border: 1px solid red; */
+
+    .pricing-reaction {
+      height: 100%;
+      width: 100%;
+      /* border: 1px solid blue; */
+
+      span {
+        cursor: pointer;
+        font-size: var(--fontSizeM);
+
+        svg {
+          font-size: 2rem;
+
+          @media (min-width: 768px) {
+            font-size: var(--fontSizeMega);
+          }
+        }
+
+        .pricing-reaction-count {
+          margin-left: var(--marginS);
+          font-size: var(--fontSizeXs);
+        }
+      }
     }
   }
 }

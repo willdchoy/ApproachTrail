@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Boldonse&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap");
 
 *,
 *::before,
@@ -34,13 +34,14 @@
   --fontWeightBoldMedium: 400;
   --fontWeightBoldLight: 300;
 
-  font-family: "Mulish", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 300;
+  font-weight: 400;
   font-style: normal;
 
   --borderRadiusS: 3px;
   --borderRadiusM: 5px;
+  --borderColor: rgb(68, 73, 80);
   --marginS: 5px;
   --marginM: 10px;
   --marginL: 15px;
@@ -55,28 +56,30 @@
   /* base colors light */
   --colorLightWhite: rgb(255, 255, 255);
   --colorLightDarkGrey: rgb(24, 26, 28);
+  --colorLightDarkGreyMuted: rgba(255, 255, 255, 0.5);
   --colorLightMediumGrey: rgb(53, 58, 62);
   --colorLightLightGrey: rgb(84, 90, 97);
   --colorLightDarkGreen: rgb(1, 72, 71);
-  --colorLightBurntOrange: rgb(255, 106, 51); /* rgb(211, 84, 0); */
+  --colorLightBurntOrange: rgb(202, 138, 4);
 
   /* base colors dark */
   --colorDarkBlack: rgb(23, 24, 35);
   --colorDarkDarkGrey: rgb(45, 47, 62);
-  --colorDarkMediumGrey: rgb(36, 37, 51);
+  --colorDarkMediumGrey: rgb(109, 114, 128);
   --colorDarkWhite: rgb(255, 255, 255);
-  --colorDarkOffWhite: rgb(230, 236, 242);
+  --colorDarkOffWhite: rgba(255, 255, 255, 0.8);
   --colorDarkNeonGreen: rgb(5, 189, 186);
   --colorDarkBlue: rgb(105, 154, 252);
-  --colorDarkMutedWhite: rgba(255, 255, 255, 0.8);
+  --colorDarkWhiteMuted: rgba(255, 255, 255, 0.6);
 
   /* light theme */
   --colorBackgroundPrimary: var(--colorDarkBlack);
   --colorBackgroundSecondary: var(--colorLightWhite);
   --colorHeadingPrimary: var(--colorLightDarkGrey);
-  --colorTextPrimary: var(--colorLightMediumGrey);
+  --colorTextPrimary: var(--colorLightOffWhite);
+  --colorTextPrimaryMuted: var(--colorLightDarkGreyMuted);
   --colorTextSecondary: var(--colorLightLightGrey);
-  --colorLinkPrimary: var(--colorLightLightGrey);
+  --colorLinkPrimary: var(--colorLightBurntOrange);
   --colorLinkSecondary: var(--colorLightDarkGreen);
   --colorActionPrimaryBackground: var(--colorLightBurntOrange);
   --colorActionPrimaryText: var(--colorLightWhite);
@@ -91,7 +94,7 @@
     --colorTextPrimary: var(--colorDarkOffWhite);
     --colorTextSecondary: var(--colorDarkMediumGrey);
     --colorLinkPrimary: var(--colorDarkBlue);
-    --colorLinkSecondary: var(--colorDarkMutedWhite);
+    --colorLinkSecondary: var(--colorDarkWhiteMuted);
     --colorActionPrimaryBackground: var(--colorDarkBlue);
     --colorActionPrimaryText: var(--colorAllWhite);
   }
@@ -133,7 +136,7 @@ input {
   border-radius: var(--borderRadiusM);
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
-  border: 1.5px solid lightgray;
+  border: 1.5px solid var(--borderColor);
   outline: none;
   transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   box-shadow: 0px 0px 20px -18px;
