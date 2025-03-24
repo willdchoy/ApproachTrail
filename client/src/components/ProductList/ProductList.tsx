@@ -1,34 +1,22 @@
 import "./ProductList.css";
+import { useQuery } from "@tanstack/react-query";
 import { Product as TProduct } from "@/types/types";
-import Product from "@/components/Product/Product";
-import { useService } from "@/hooks/useService";
+import ProductCard from "@/components/ProductCard/ProductCard";
+import { getProductsByCategory } from "@/api/products";
+
+const categoryId = 1;
 
 function ProductList() {
-  const { isLoading, error, data } = useService("/categories/2");
-  const products = data as TProduct[];
-
-  console.log(isLoading, error, data);
+  const { data: products } = useQuery({
+    queryKey: ["categoryId", categoryId],
+    queryFn: () => getProductsByCategory(categoryId),
+  });
 
   return (
     <div className="product-list">
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={product.product_id} {...product} />;
-          })
-        : "No products available!"}
-      {products
-        ? products.map((product: TProduct) => {
-            return <Product key={product.product_id} {...product} />;
-          })
-        : "No products available!"}
-      {products
-        ? products.map((product: TProduct) => {
-            return <Product key={product.product_id} {...product} />;
-          })
-        : "No products available!"}
-      {products
-        ? products.map((product: TProduct) => {
-            return <Product key={product.product_id} {...product} />;
+            return <ProductCard key={Math.random()} {...product} />;
           })
         : "No products available!"}
     </div>

@@ -1,5 +1,6 @@
 .header-grid-logo {
   grid-area: logo;
+  justify-self: flex-start;
 }
 .header-grid-search {
   grid-area: search;
@@ -15,17 +16,12 @@ header {
     "logo user"
     "search search";
   align-items: center;
-
-  background-color: var(--color-primary-dark);
-  color: white;
+  background-color: var(--colorBackgroundPrimary);
+  color: var(--colorAllWhite);
 
   h1 {
+    color: var(--colorAllWhite);
     margin: 0;
-  }
-
-  div.user-menu {
-    justify-self: right;
-    margin-right: 25px;
   }
 }
 
@@ -34,9 +30,5 @@ header {
     gap: 20px;
     grid-template-columns: 170px 1fr 60px;
     grid-template-areas: "logo search user";
-
-    div.user-menu {
-      justify-self: center;
-    }
   }
 }

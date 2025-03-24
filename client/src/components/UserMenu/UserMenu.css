@@ -1,10 +1,16 @@
 .user-menu {
-  a img {
-    width: 45px;
+  display: flex;
+  justify-content: flex-end;
+
+  a {
+    margin-right: var(--marginL);
   }
 
-  .fa-person-hiking {
-    color: white;
-    font-size: 28px;
+  @media (min-width: 500px) {
+    justify-content: flex-end;
+  }
+
+  a img {
+    width: 45px;
   }
 }
