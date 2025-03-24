@@ -1,6 +1,6 @@
 import "./ProductList.css";
 import { Product as TProduct } from "@/types/types";
-import Product from "@/components/Product/Product";
+import ProductCard from "@/components/ProductCard/ProductCard";
 import { useService } from "@/hooks/useService";
 
 function ProductList() {
@@ -13,82 +13,82 @@ function ProductList() {
     <div className="product-list">
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={Math.random()} {...product} />;
+            return <ProductCard key={Math.random()} {...product} />;
           })
         : "No products available!"}
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={Math.random()} {...product} />;
+            return <ProductCard key={Math.random()} {...product} />;
           })
         : "No products available!"}
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={Math.random()} {...product} />;
+            return <ProductCard key={Math.random()} {...product} />;
           })
         : "No products available!"}
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={Math.random()} {...product} />;
+            return <ProductCard key={Math.random()} {...product} />;
           })
         : "No products available!"}
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={Math.random()} {...product} />;
+            return <ProductCard key={Math.random()} {...product} />;
           })
         : "No products available!"}
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={Math.random()} {...product} />;
+            return <ProductCard key={Math.random()} {...product} />;
           })
         : "No products available!"}
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={Math.random()} {...product} />;
+            return <ProductCard key={Math.random()} {...product} />;
           })
         : "No products available!"}
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={Math.random()} {...product} />;
+            return <ProductCard key={Math.random()} {...product} />;
           })
         : "No products available!"}
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={Math.random()} {...product} />;
+            return <ProductCard key={Math.random()} {...product} />;
           })
         : "No products available!"}
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={Math.random()} {...product} />;
+            return <ProductCard key={Math.random()} {...product} />;
           })
         : "No products available!"}
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={Math.random()} {...product} />;
+            return <ProductCard key={Math.random()} {...product} />;
           })
         : "No products available!"}
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={Math.random()} {...product} />;
+            return <ProductCard key={Math.random()} {...product} />;
           })
         : "No products available!"}
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={Math.random()} {...product} />;
+            return <ProductCard key={Math.random()} {...product} />;
           })
         : "No products available!"}
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={Math.random()} {...product} />;
+            return <ProductCard key={Math.random()} {...product} />;
           })
         : "No products available!"}
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={Math.random()} {...product} />;
+            return <ProductCard key={Math.random()} {...product} />;
           })
         : "No products available!"}
       {products
         ? products.map((product: TProduct) => {
-            return <Product key={Math.random()} {...product} />;
+            return <ProductCard key={Math.random()} {...product} />;
           })
         : "No products available!"}
     </div>

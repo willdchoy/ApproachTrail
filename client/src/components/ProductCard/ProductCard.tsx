@@ -1,4 +1,4 @@
-import "./Product.css";
+import "./ProductCard.css";
 import { faker } from "@faker-js/faker";
 import productImage from "@/assets/product.jpg";
 import { PiHeartThin } from "react-icons/pi";
@@ -37,7 +37,7 @@ function Product({
             <a href="#">{faker.company.name()}</a>
           </span>
           <span className="product-name">
-            <a href="#">{`${faker.commerce.productName()} ${faker.commerce.productName()}`}</a>
+            <a href="#">{`${faker.commerce.productName()}`}</a>
           </span>
         </div>
         <div className="product-details-row">
