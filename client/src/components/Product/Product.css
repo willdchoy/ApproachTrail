@@ -46,7 +46,7 @@
       font-size: var(--fontSizeS);
     }
     .product-name {
-      font-size: var(--fontSizeL);
+      font-size: var(--fontSizeM);
       font-weight: var(--fontWeightHeavy);
     }
 
@@ -123,34 +123,25 @@
   }
 
   .pricing-reactions {
-    display: none;
-    /* align-items: center; */
-    /* justify-content: space-between; */
-    border-bottom: 1px solid var(--borderColor);
-    padding: 0 var(--paddingS);
-    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    margin: 0 var(--marginL);
 
     .pricing-reaction {
-      height: 100%;
-      width: 100%;
-      /* border: 1px solid blue; */
-
+      display: flex;
+      align-items: center;
       span {
-        cursor: pointer;
-        font-size: var(--fontSizeM);
-
         svg {
-          font-size: 2rem;
-
-          @media (min-width: 768px) {
-            font-size: var(--fontSizeMega);
-          }
+          position: relative;
+          top: 4px;
+          font-size: var(--fontSizeXl);
         }
-
-        .pricing-reaction-count {
-          margin-left: var(--marginS);
-          font-size: var(--fontSizeXs);
-        }
+      }
+      .pricing-reaction-count {
+        font-size: var(--fontSizeS);
+        margin-left: var(--marginS);
       }
     }
   }

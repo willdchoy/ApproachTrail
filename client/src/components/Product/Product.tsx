@@ -1,6 +1,4 @@
 import "./Product.css";
-import Comments from "../Comments/Comments";
-import VendorPricing from "@/components/VendorPricing/VendorPricing";
 import { faker } from "@faker-js/faker";
 import productImage from "@/assets/product.jpg";
 import { PiHeartThin } from "react-icons/pi";
@@ -39,14 +37,13 @@ function Product({
             <a href="#">{faker.company.name()}</a>
           </span>
           <span className="product-name">
-            <a href="#">{faker.commerce.productName()}</a>
+            <a href="#">{`${faker.commerce.productName()} ${faker.commerce.productName()}`}</a>
           </span>
         </div>
         <div className="product-details-row">
           <div className="product-swatches">
             <div className="swatch swatch-1" />
             <div className="swatch swatch-2" />
-            <div className="swatch swatch-3" />
             <div className="swatch swatch-more" />
           </div>
           <div>
@@ -73,9 +70,9 @@ function Product({
         <div className="pricing-reaction">
           <span style={{ position: "relative", top: "-4px" }}>
             {Math.random() < 0.5 ? (
-              <PiHeartThin size="1.7rem" color="gray" />
+              <PiHeartThin color="gray" />
             ) : (
-              <PiHeartFill size="1.7rem" color="#9c2a25" />
+              <PiHeartFill color="#9c2a25" />
             )}
           </span>
           <span className="pricing-reaction-count">
@@ -84,20 +81,17 @@ function Product({
         </div>
         <div className="pricing-reaction">
           <span>
-            <PiShareFatThin size="1.7rem" color="gray" />
+            <PiShareFatThin color="gray" />
           </span>
           <span className="pricing-reaction-count">share</span>
         </div>
         <div className="pricing-reaction">
           <span>
-            <FaMessage size="1.2rem" />
+            <FaMessage />
           </span>
           <span className="pricing-reaction-count">132</span>
         </div>
       </div>
-
-      {/* <VendorPricing price={price} />
-      <Comments /> */}
     </div>
   );
 }

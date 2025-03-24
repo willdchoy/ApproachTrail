@@ -14,10 +14,11 @@
   color-scheme: light dark;
 
   /* system theme */
-  --breakpointMobile: 480px;
-  --breakpointTablet: 768px;
-  --breakpointLaptop: 1280px;
-  --breakpointDesktop: 1430px;
+  --breakpointMobile: 30rem;
+  --breakpointTablet: 48rem;
+  --breakpointLaptop: 80rem;
+  --breakpointDesktop: 89.375;
+  --maxAppWidth: 90rem;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -76,7 +77,7 @@
   --colorBackgroundPrimary: var(--colorDarkBlack);
   --colorBackgroundSecondary: var(--colorLightWhite);
   --colorHeadingPrimary: var(--colorLightDarkGrey);
-  --colorTextPrimary: var(--colorLightOffWhite);
+  --colorTextPrimary: var(--colorLightDarkGrey);
   --colorTextPrimaryMuted: var(--colorLightDarkGreyMuted);
   --colorTextSecondary: var(--colorLightLightGrey);
   --colorLinkPrimary: var(--colorLightBurntOrange);
@@ -102,7 +103,8 @@
 
 body {
   margin: 0 auto;
-  max-width: var(--breakpointDesktop);
+  max-width: var(--maxAppWidth);
+  color: var(--colorTextPrimary);
   background-color: var(--colorBackgroundPrimary);
 }
 
