@@ -1,6 +1,6 @@
 import "./ProductList.css";
 import { useQuery } from "@tanstack/react-query";
-import { Product as TProduct } from "@/types/types";
+import { ProductGroup } from "@/types/types";
 import ProductCard from "@/components/ProductCard/ProductCard";
 import { getProductsByCategory } from "@/api/products";
 
@@ -17,14 +17,16 @@ function ProductList() {
     queryFn: () => getProductsByCategory(categoryId),
   });
 
+  console.log(products);
+
   return (
     <div className="product-list">
       {isPending ? "Still loading...." : undefined}
       {isError ? error : undefined}
 
       {products
-        ? products.map((product: TProduct) => {
-            return <ProductCard key={Math.random()} {...product} />;
+        ? products.map((productGroup: ProductGroup) => {
+            return <ProductCard key={Math.random()} {...productGroup} />;
           })
         : "No products available!"}
     </div>

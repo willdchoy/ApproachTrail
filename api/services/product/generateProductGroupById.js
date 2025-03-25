@@ -30,7 +30,7 @@ export async function generateProductGroupById(
 
     const { rows: productPriceHistory } = await client.query(
       `
-        SELECT 
+        SELECT
           pph.product_price_history_id, pi.product_item_id, pph.product_vendor_id,
           pph.original_price, pph.sale_price, pph.created_at, ps.vendor_name, ps.vendor_code, ps.affiliate_id
         FROM product_item pi
@@ -71,6 +71,11 @@ export async function generateProductGroupById(
         sizes: [...new Set(productItems.map((item) => item.attribute.size))],
         colors: [...new Set(productItems.map((item) => item.attribute.color))],
       },
+      price_history: {
+        fromPrice: productPriceHistory.sort((product) => product.sale_price)[0]
+          .sale_price,
+        history: productPriceHistory,
+      },
       items: productItems.map(
         ({
           // TODO Fix eslint issues
@@ -85,9 +90,6 @@ export async function generateProductGroupById(
         }) => {
           return {
             ...item,
-            price_history: productPriceHistory.filter(
-              (price) => price.product_item_id === item.product_item_id
-            ),
           };
         }
       ),

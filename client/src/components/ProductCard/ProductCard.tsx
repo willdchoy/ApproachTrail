@@ -1,4 +1,5 @@
 import "./ProductCard.css";
+import { ProductGroup as TProductGroup } from "@/types/types";
 import { faker } from "@faker-js/faker";
 import productImage from "@/assets/product.jpg";
 import { PiHeartThin } from "react-icons/pi";
@@ -8,26 +9,12 @@ import { PiHeartFill } from "react-icons/pi";
 import { PiTagSimpleFill } from "react-icons/pi";
 import { FaMessage } from "react-icons/fa6";
 
-interface ProductProps {
-  product_id: number;
-  name: string;
-  brand_name: string;
-  productImgSrc: string;
-}
-
-function Product({
-  // @ts-expect-error TODO
-  metadata,
-  name,
-  productImgSrc = productImage,
-}: ProductProps) {
-  const price = faker.commerce.price();
-
+function ProductGroup({ metadata, price_history }: TProductGroup) {
   return (
     <div className="product" data-product-id={metadata.product_id}>
       <div className="product-card-background" />
       <div className="product-image">
-        <img src={productImgSrc} alt={name} />
+        <img src={productImage} alt={metadata.name} />
       </div>
       {/* details */}
       <div className="product-details">
@@ -48,7 +35,7 @@ function Product({
           <div>
             <div className="product-pricing">
               <div className="product-from">from</div>
-              <span className="product-price">${price}</span>
+              <span className="product-price">${price_history.fromPrice}</span>
             </div>
           </div>
         </div>
@@ -95,4 +82,4 @@ function Product({
   );
 }
 
-export default Product;
+export default ProductGroup;
