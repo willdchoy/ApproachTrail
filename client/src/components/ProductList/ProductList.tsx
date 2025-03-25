@@ -7,13 +7,21 @@ import { getProductsByCategory } from "@/api/products";
 const categoryId = 1;
 
 function ProductList() {
-  const { data: products } = useQuery({
+  const {
+    isPending,
+    isError,
+    error,
+    data: products,
+  } = useQuery({
     queryKey: ["categoryId", categoryId],
     queryFn: () => getProductsByCategory(categoryId),
   });
 
   return (
     <div className="product-list">
+      {isPending ? "Still loading...." : undefined}
+      {isError ? error : undefined}
+
       {products
         ? products.map((product: TProduct) => {
             return <ProductCard key={Math.random()} {...product} />;

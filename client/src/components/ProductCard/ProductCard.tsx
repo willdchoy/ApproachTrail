@@ -16,10 +16,9 @@ interface ProductProps {
 }
 
 function Product({
-  // @ts-expect-error ???
+  // @ts-expect-error TODO
   metadata,
   name,
-  // brand_name,
   productImgSrc = productImage,
 }: ProductProps) {
   const price = faker.commerce.price();
@@ -34,10 +33,10 @@ function Product({
       <div className="product-details">
         <div>
           <span className="product-brand">
-            <a href="#">{faker.company.name()}</a>
+            <a href="#">{metadata.brand_name}</a>
           </span>
           <span className="product-name">
-            <a href="#">{`${faker.commerce.productName()}`}</a>
+            <a href="#">{metadata.name}</a>
           </span>
         </div>
         <div className="product-details-row">
