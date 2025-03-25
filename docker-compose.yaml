@@ -6,14 +6,14 @@ services:
 
   api:
     extends:
-      file: ./api/docker-compose.yaml
+      file: ./app/api/docker-compose.yaml
       service: api
     depends_on:
       - db
 
   # web:
   #   extends:
-  #     file: ./client/docker-compose.yaml
+  #     file: ./app/client/docker-compose.yaml
   #     service: web
   #   depends_on:
   #     - api

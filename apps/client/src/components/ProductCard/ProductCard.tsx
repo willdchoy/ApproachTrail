@@ -1,5 +1,5 @@
 import "./ProductCard.css";
-import { ProductGroup as TProductGroup } from "@/types/types";
+import { ProductGroup as TProductGroup } from "@at/types";
 import { faker } from "@faker-js/faker";
 import productImage from "@/assets/product.jpg";
 import { PiHeartThin } from "react-icons/pi";

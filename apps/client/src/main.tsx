@@ -5,7 +5,7 @@ import { RouterProvider, createRouter } from "@tanstack/react-router";
 import ErrorBoundary from "./components/ErrorBoundry/ErrorBoundry.tsx";
 
 // Import the generated route tree
-import { routeTree } from "./routeTree.gen";
+import { routeTree } from "./routeTree.gen.ts";
 
 // Create a new router instance
 const router = createRouter({ routeTree });
