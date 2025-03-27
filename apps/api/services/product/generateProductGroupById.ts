@@ -1,20 +1,28 @@
+import type {
+  ProductGroup,
+  ProductItem,
+  ProductMedia,
+  ProductItemPriceHistory,
+} from "@at/types";
+import type { FastifyInstance } from "fastify";
+
 /**
  * @param {Fastify} fastify Fastify instance
  * @param {number} id product id
  * @returns productResponse
  */
 export async function generateProductGroupById(
-  fastify,
-  id,
-  existingClientConnection
+  fastify: FastifyInstance,
+  id: number
 ) {
-  const client = existingClientConnection || (await fastify.pg.connect());
+  // @ts-expect-error ???
+  const client = await fastify.pg.connect();
 
   try {
     const { rows: productItems } = await client.query(
       `
         SELECT 
-          pi.product_item_id, pi.sku, pi.qty_in_stock, pi.attribute, p.product_id, p.name, 
+          pi.product_item_id, pi.sku, pi.qty_in_stock, pi.attributes, p.product_id, p.name, 
           p.description, pb.brand_code, pb.brand_name, pc.category_name, pc.category_code
         FROM product_item pi
         JOIN product p
@@ -53,7 +61,7 @@ export async function generateProductGroupById(
       [id]
     );
 
-    const productResponse = {
+    const productResponse: ProductGroup = {
       metadata: {
         name: productItems[0].name,
         product_id: productItems[0].product_id,
@@ -64,16 +72,29 @@ export async function generateProductGroupById(
         category_code: productItems[0].category_code,
       },
       media: {
-        images: productMedia.filter((media) => media.type === "image"),
-        videos: productMedia.filter((media) => media.type === "video"),
+        images: productMedia.filter(
+          (media: ProductMedia) => media.type === "image"
+        ),
+        videos: productMedia.filter(
+          (media: ProductMedia) => media.type === "video"
+        ),
       },
       attributes: {
-        sizes: [...new Set(productItems.map((item) => item.attribute.size))],
-        colors: [...new Set(productItems.map((item) => item.attribute.color))],
+        sizes: [
+          ...new Set(
+            productItems.map((item: ProductItem) => item.attributes.size)
+          ),
+        ],
+        colors: [
+          ...new Set(
+            productItems.map((item: ProductItem) => item.attributes.color)
+          ),
+        ],
       },
       price_history: {
-        fromPrice: productPriceHistory.sort((product) => product.sale_price)[0]
-          .sale_price,
+        fromPrice: productPriceHistory.sort(
+          (priceHistory: ProductItemPriceHistory) => priceHistory.sale_price
+        )[0].sale_price,
         history: productPriceHistory,
       },
       items: productItems.map(

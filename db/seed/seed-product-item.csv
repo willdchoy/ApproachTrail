@@ -1,4 +1,4 @@
-product_item_id;sku;qty_in_stock;product_id;attribute
+product_item_id;sku;qty_in_stock;product_id;attributes
 1;1001;10;1;"{""color"": ""Azure Blue"", ""size"": ""S""}"
 2;1002;10;1;"{""color"": ""Azure Blue"", ""size"": ""M""}"
 3;1003;10;1;"{""color"": ""Azure Blue"", ""size"": ""L""}"

@@ -1,14 +1,11 @@
-export type BrandNames = "The North Face";
+export type BrandNames = "Zpacks";
+export type BrandCodes = "zpacks";
 export type CategoryId = "mens-jackets" | "womens-jackets";
 export type CategoryType = "rain" | "snow";
 export type CategoryName = "Men's Jackets" | "Women's Jackets";
 export type Sex = "Men's" | "Women's";
 
-type ProductGroupAttributes = {
-  [key: string]: string[];
-};
-
-type ProductGroupMetadata = {
+export type ProductGroupMetadata = {
   name: string;
   product_id: number;
   description: string;
@@ -18,7 +15,7 @@ type ProductGroupMetadata = {
   category_code: string;
 };
 
-type ProductGroupPriceHistory = {
+export type ProductItemPriceHistory = {
   affiliate_id: number;
   created_at: string;
   original_price: string;
@@ -30,16 +27,16 @@ type ProductGroupPriceHistory = {
   vendor_name: string;
 };
 
-type ProductItemAttributes = {
+export type ProductItemAttributes = {
   [key: string]: string;
 };
 
-type ProductPriceHistory = {
-  history: ProductGroupPriceHistory[];
+export type ProductPriceHistory = {
+  history: ProductItemPriceHistory[];
   fromPrice: number;
 };
 
-type ProductMedia = {
+export type ProductMedia = {
   filename: string;
   product_id: number;
   product_media_id: number;
@@ -51,10 +48,16 @@ export type ProductItem = {
   product_item_id: number;
   qty_in_stock: number;
   sku: string;
+  name: string;
+  description: string;
+  brand_code: BrandCodes;
+  brand_name: BrandNames;
+  category_name: CategoryName;
+  category_code: CategoryId;
 };
 
 export type ProductGroup = {
-  attribute: ProductGroupAttributes;
+  attributes: ProductGroupAtrributes;
   items: ProductItem[];
   metadata: ProductGroupMetadata;
   price_history: ProductPriceHistory;
@@ -63,6 +66,16 @@ export type ProductGroup = {
     videos: ProductMedia[];
   };
 };
+
+export type ApparelSizes = string[];
+export type ApparelColors = string[];
+
+export type ProductAttributesApparel = {
+  sizes: ApparelSizes[] | unknown[];
+  colors: ApparelColors[] | unknown[];
+};
+
+export type ProductGroupAtrributes = ProductAttributesApparel;
 
 type CategoryMetaData = {
   brandName: BrandNames;

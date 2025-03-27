@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS product_item (
   sku VARCHAR(100),
   qty_in_stock INT,
   product_id INT references product(product_id),
-  attribute jsonb
+  attributes jsonb
 );
 
 CREATE TABLE IF NOT EXISTS product_price_history (
@@ -100,7 +100,7 @@ CSV HEADER;
 
 -- product item
 -- !! Must use ; as the delimeter when importing json
-COPY product_item(product_item_id,sku,qty_in_stock,product_id,attribute)
+COPY product_item(product_item_id,sku,qty_in_stock,product_id,attributes)
 FROM '/var/data/postgres/seed/seed-product-item.csv'
 DELIMITER ';'
 CSV HEADER;
