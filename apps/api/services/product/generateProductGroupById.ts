@@ -9,7 +9,7 @@ import type { FastifyInstance } from "fastify";
 /**
  * @param {Fastify} fastify Fastify instance
  * @param {number} id product id
- * @returns productResponse
+ * @returns productGroup
  */
 export async function generateProductGroupById(
   fastify: FastifyInstance,
@@ -61,7 +61,7 @@ export async function generateProductGroupById(
       [id]
     );
 
-    const productResponse: ProductGroup = {
+    const productGroup: ProductGroup = {
       metadata: {
         name: productItems[0].name,
         product_id: productItems[0].product_id,
@@ -116,7 +116,7 @@ export async function generateProductGroupById(
       ),
     };
 
-    return productResponse;
+    return productGroup;
   } catch (e) {
     throw new Error(e);
   } finally {
