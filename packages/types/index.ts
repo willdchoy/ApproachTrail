@@ -81,3 +81,10 @@ export type CategoryData = {
   metadata: CategoryMetaData;
   products: ProductGroup[];
 };
+
+export type useServiceResponse<T> = {
+  isPending: boolean;
+  isError: boolean;
+  error: Error | undefined;
+  data: Array<T> | undefined;
+};

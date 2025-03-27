@@ -1,33 +1,31 @@
 import { get } from "@/utils/html";
 import { useState, useEffect } from "react";
+import { useServiceResponse } from "@at/types";
 
-type useServiceResponseApi<T> = {
-  isLoading: boolean;
-  error: Error | undefined;
-  data: T | undefined;
-};
-
-export function useService<T>(url: string): useServiceResponseApi<T> {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+export function useService<T>(url: string): useServiceResponse<T> {
+  const [isPending, setIsPending] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
   const [error, setError] = useState<Error | undefined>();
   const [data, setData] = useState<T | undefined>();
 
   useEffect(() => {
     const fetch = async () => {
       try {
-        setIsLoading(true);
+        setIsPending(true);
         setData(await get<T>(url));
       } catch (e) {
+        setIsError(true);
         setError(e as Error);
       } finally {
-        setIsLoading(false);
+        setIsPending(false);
       }
     };
     fetch();
   }, []);
 
   return {
-    isLoading,
+    isPending,
+    isError,
     error,
     data,
   };
