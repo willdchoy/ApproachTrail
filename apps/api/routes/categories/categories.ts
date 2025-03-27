@@ -1,4 +1,4 @@
-import { generateProductGroupById } from "#services/product/generateProductGroupById.js";
+import { generateProductGroupById } from "../../services/product/generateProductGroupById.js";
 
 export default async function (fastify) {
   fastify.get("/categories/:categoryId", async (req, reply) => {
@@ -20,7 +20,11 @@ export default async function (fastify) {
       const products = [];
 
       for await (const productId of productIds) {
-        let product = await generateProductGroupById(fastify, productId);
+        const product = await generateProductGroupById(
+          fastify,
+          productId,
+          null
+        );
         products.push(product);
       }
 

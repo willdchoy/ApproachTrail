@@ -1,12 +1,13 @@
 import Fastify from "fastify";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import "@dotenvx/dotenvx/config";
 
 const fastify = Fastify({
-  logger: process.env.ENABLE_LOGGER,
+  logger: process.env.ENABLE_LOGGER === "true",
 });
 
-const ALLOWED_ORIGINS = process.env.ALLOWED_ORIGINS;
+const ALLOWED_ORIGINS = process.env.ALLOWED_ORIGINS || ["null"];
 const ALLOWED_METHODS = ["GET"];
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -36,7 +37,7 @@ await fastify.register(import("@fastify/autoload"), {
 // enable CORS
 await fastify.register(import("@fastify/cors"), {
   origin: (origin, cb) => {
-    const hostname = origin ? new URL(origin).hostname : null;
+    const hostname = origin ? new URL(origin).hostname : "null";
     if (ALLOWED_ORIGINS.includes(hostname)) {
       cb(null, true);
       return;
@@ -54,7 +55,7 @@ fastify.register(import("@fastify/postgres"), {
 
 // server
 fastify.listen(
-  { port: process.env.PORT, host: process.env.HOST },
+  { port: Number(process.env.PORT), host: process.env.HOST },
   function (err, address) {
     if (err) {
       fastify.log.error(err);
